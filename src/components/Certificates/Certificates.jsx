@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './Certificates.css';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
-// Importing Certificate Assets
+// Importing Certificate Assets (Main Folder)
 import cppCert from '../../assets/Certificates/Cpp-and-Oop-Concepts.jpg';
 import pythonCert from '../../assets/Certificates/Python Complete course.jpg';
 import spotifyCert from '../../assets/Certificates/Spotify data Visualization.jpg';
@@ -14,23 +14,85 @@ import cloudCert from '../../assets/Certificates/Cloud Native Bhujbal knowlege c
 import jsDomCert from '../../assets/Certificates/JS Dom Manupulation from fyned aademy.jpg';
 import internshipCert from '../../assets/Certificates/Full stack dev internship program by eduraka.jpg';
 import aiHackCert from '../../assets/Certificates/International Agentic AI Hacathon Sandip University.jpg';
+import copadoCert from '../../assets/Certificates/copodo-certified-capadoai-certificate.jpg';
+
+// Additional Certificates from assets
+import sqlCert from '../../assets/SQL Course.png';
+import linuxCert from '../../assets/Linux for Bingginners.png';
+import backendCert from '../../assets/Backend development course.jpg';
+import computerEngCert from '../../assets/Computer Engineering Course.webp';
+
+// PDF Certificates
+import finlitCert from '../../assets/Certificates/Innovate4FinLit By Hack2skill Game Challenge.pdf';
+import prototypeCert from '../../assets/Certificates/Prototype Submission solution Challenge 2026 - Build with AI.pdf';
 
 const certificatesData = [
   {
-    title: "C++ and OOP Concepts",
-    issuer: "Course Completion",
-    image: cppCert,
-    description: "Comprehensive certification in C++ programming and Object Oriented Programming principles.",
-    narration: "Certificate for C++ and OOP Concepts. This certification covers comprehensive C++ programming and Object Oriented Programming principles.",
-    initialRotation: 270,
-    initialScale: 0.7
+    title: "Google Build with AI Prototype",
+    issuer: "Google Solution Challenge 2026",
+    file: prototypeCert,
+    type: "pdf",
+    description: "Official recognition for building an AI prototype for the Google Solution Challenge 2026.",
+    narration: "Google Build with AI Prototype Certificate. This recognizes the successful submission of an AI-powered solution for the Google Solution Challenge 2026."
+  },
+  {
+    title: "Innovate4FinLit Winner",
+    issuer: "Hack2skill Game Challenge",
+    file: finlitCert,
+    type: "pdf",
+    description: "Awarded for winning the Innovate for Financial Literacy Hackathon Game Challenge.",
+    narration: "Innovate 4 FinLit Winner Certificate. Awarded by Hack 2 Skill for excellence in developing financial literacy gaming solutions."
+  },
+  {
+    title: "Computer Engineering Course",
+    issuer: "Bhujbal Knowledge City",
+    image: computerEngCert,
+    description: "Comprehensive certification in Computer Engineering principles and practices.",
+    narration: "Computer Engineering Course Certificate. Representing foundational and advanced knowledge in computer engineering."
+  },
+  {
+    title: "SQL Certification",
+    issuer: "Database Management",
+    image: sqlCert,
+    description: "Expertise in SQL for database design, querying, and management.",
+    narration: "SQL Certification. Expertise in Structured Query Language for database design and management."
+  },
+  {
+    title: "Linux for Beginners",
+    issuer: "Open Source Academy",
+    image: linuxCert,
+    description: "Foundational knowledge of Linux operating system and command line interface.",
+    narration: "Linux for Beginners Certificate. Foundational knowledge of Linux operating system and command line interface."
+  },
+  {
+    title: "Backend Development",
+    issuer: "Full Stack Mastery",
+    image: backendCert,
+    description: "Mastery of server-side technologies, APIs, and database integration.",
+    narration: "Backend Development Certificate. Mastery of server-side technologies and API development."
+  },
+  {
+    title: "Copado AI Certified",
+    issuer: "Copado",
+    image: copadoCert,
+    description: "Certified expert in Copado AI for DevOps and automation workflows.",
+    narration: "Copado AI Certified Developer. Demonstrating expertise in AI-driven DevOps and automation."
   },
   {
     title: "International Agentic AI Hackathon",
     issuer: "Sandip University",
     image: aiHackCert,
     description: "Recognized for participation and innovation in the International Agentic AI Hackathon.",
-    narration: "International Agentic AI Hackathon Certificate from Sandip University. Recognized for participation and innovation in Agentic AI technologies.",
+    narration: "International Agentic AI Hackathon Certificate from Sandip University.",
+    initialRotation: 270,
+    initialScale: 0.7
+  },
+  {
+    title: "C++ and OOP Concepts",
+    issuer: "Course Completion",
+    image: cppCert,
+    description: "Comprehensive certification in C++ programming and Object Oriented Programming principles.",
+    narration: "Certificate for C++ and OOP Concepts.",
     initialRotation: 270,
     initialScale: 0.7
   },
@@ -39,63 +101,63 @@ const certificatesData = [
     issuer: "Course Completion",
     image: pythonCert,
     description: "Mastery of Python programming language from basics to advanced levels.",
-    narration: "Python Complete Course Certificate. Representing mastery of Python programming language from basics to advanced levels."
+    narration: "Python Complete Course Certificate."
   },
   {
     title: "Full Stack Web Development Internship",
     issuer: "Edureka",
     image: internshipCert,
     description: "Successfully completed the Full Stack Web Development internship program.",
-    narration: "Full Stack Web Development Internship Certificate by Edureka. Successfully completed the intensive internship program."
+    narration: "Full Stack Web Development Internship Certificate by Edureka."
   },
   {
     title: "Cybersecurity Essentials 101",
     issuer: "Cisco / Networking Academy",
     image: cyberCert,
     description: "Foundational knowledge in cybersecurity threats, risks, and protection methods.",
-    narration: "Cybersecurity Essentials 101 Certificate. Foundational knowledge in cybersecurity threats, risks, and protection methods."
+    narration: "Cybersecurity Essentials 101 Certificate."
   },
   {
     title: "Cloud Native Computing",
     issuer: "Bhujbal Knowledge City",
     image: cloudCert,
     description: "Certification in Cloud Native technologies and architectures.",
-    narration: "Cloud Native Computing Certificate from Bhujbal Knowledge City. Focusing on modern cloud technologies and architectures."
+    narration: "Cloud Native Computing Certificate from Bhujbal Knowledge City."
   },
   {
     title: "JS DOM Manipulation",
     issuer: "Fyned Academy",
     image: jsDomCert,
     description: "Expertise in JavaScript Document Object Model manipulation for dynamic web apps.",
-    narration: "JavaScript DOM Manipulation Certificate from Fyned Academy. Expertise in manipulating the Document Object Model for dynamic web applications."
+    narration: "JavaScript DOM Manipulation Certificate from Fyned Academy."
   },
   {
     title: "Hacktoberfest Contribution",
     issuer: "DigitalOcean / Hacktoberfest",
     image: hacktoberfestCert,
     description: "Awarded for successful contributions to open-source projects during Hacktoberfest.",
-    narration: "Certificate of Hacktoberfest. Awarded for successful contributions to open-source projects."
+    narration: "Certificate of Hacktoberfest."
   },
   {
     title: "Spotify Data Visualization",
     issuer: "Data Science Project",
     image: spotifyCert,
     description: "Certification for data analysis and visualization of Spotify streaming data.",
-    narration: "Spotify Data Visualization Certificate. Awarded for excellence in data analysis and visualization of music streaming trends."
+    narration: "Spotify Data Visualization Certificate."
   },
   {
     title: "MERN Stack Interview Prep",
     issuer: "Technical Training",
     image: mernCert,
     description: "Advanced preparation and mastery of MERN stack concepts for professional roles.",
-    narration: "MERN Stack Interview Questions Certificate. Demonstrating advanced preparation and mastery of MongoDB, Express, React, and Node.js concepts."
+    narration: "MERN Stack Interview Questions Certificate."
   },
   {
     title: "All India Career Summit",
     issuer: "Aptus",
     image: careerCert,
     description: "Participation in the national level career summit for engineering professionals.",
-    narration: "All India Career Summit Certificate by Aptus. Participation in the national level career summit for engineering professionals."
+    narration: "All India Career Summit Certificate by Aptus."
   }
 ];
 
@@ -103,9 +165,6 @@ const Certificates = ({ searchQuery }) => {
   const { speak, stop } = usePortfolioVoice();
   const [selectedCertIndex, setSelectedCertIndex] = useState(null);
   const [rotation, setRotation] = useState(0);
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
 
   const filteredCertificates = useMemo(() =>
     certificatesData.filter(cert =>
@@ -114,9 +173,13 @@ const Certificates = ({ searchQuery }) => {
       cert.description.toLowerCase().includes(searchQuery.toLowerCase())
     ), [searchQuery]);
 
-  const openGallery = (index) => {
-    setSelectedCertIndex(index);
-    setRotation(filteredCertificates[index].initialRotation || 0);
+  const pdfCertificates = useMemo(() => filteredCertificates.filter(c => c.type === 'pdf'), [filteredCertificates]);
+  const galleryCertificates = useMemo(() => filteredCertificates.filter(c => c.type !== 'pdf'), [filteredCertificates]);
+
+  const openGallery = (cert) => {
+    const globalIndex = certificatesData.findIndex(c => c.title === cert.title);
+    setSelectedCertIndex(globalIndex);
+    setRotation(certificatesData[globalIndex].initialRotation || 0);
   };
 
   const closeGallery = useCallback(() => {
@@ -125,179 +188,149 @@ const Certificates = ({ searchQuery }) => {
     stop();
   }, [stop]);
 
-  const nextCert = useCallback(() => {
+  const navigate = useCallback((direction) => {
     setSelectedCertIndex((prev) => {
-      const nextIdx = (prev + 1) % filteredCertificates.length;
-      setRotation(filteredCertificates[nextIdx].initialRotation || 0);
+      const nextIdx = direction === 'next'
+        ? (prev + 1) % certificatesData.length
+        : (prev - 1 + certificatesData.length) % certificatesData.length;
+      setRotation(certificatesData[nextIdx].initialRotation || 0);
       return nextIdx;
     });
-  }, [filteredCertificates]);
-
-  const prevCert = useCallback(() => {
-    setSelectedCertIndex((prev) => {
-      const prevIdx = (prev - 1 + filteredCertificates.length) % filteredCertificates.length;
-      setRotation(filteredCertificates[prevIdx].initialRotation || 0);
-      return prevIdx;
-    });
-  }, [filteredCertificates]);
-
-  const rotateImage = () => {
-    setRotation((prev) => (prev + 90) % 360);
-  };
+  }, []);
 
   useEffect(() => {
-    if (selectedCertIndex !== null && filteredCertificates[selectedCertIndex]) {
-      speak(filteredCertificates[selectedCertIndex].narration);
+    if (selectedCertIndex !== null) {
+      speak(certificatesData[selectedCertIndex].narration);
     }
-  }, [selectedCertIndex, speak, filteredCertificates]);
+  }, [selectedCertIndex, speak]);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (selectedCertIndex === null) return;
-      if (e.key === 'ArrowRight') nextCert();
-      if (e.key === 'ArrowLeft') prevCert();
-      if (e.key === 'Escape') closeGallery();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedCertIndex, nextCert, prevCert, closeGallery]);
-
-  const handleMouseMove = (e) => {
-    if (selectedCertIndex === null) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientY - innerHeight / 2) / (innerHeight / 2) * 10;
-    const y = (clientX - innerWidth / 2) / (innerWidth / 2) * -10;
-    setRotate({ x, y });
+  const handleDownload = (e, cert) => {
+    e.stopPropagation();
+    const link = document.createElement('a');
+    link.href = cert.type === 'pdf' ? cert.file : cert.image;
+    link.download = `${cert.title.replace(/\s+/g, '_')}_Certificate.${cert.type === 'pdf' ? 'pdf' : 'jpg'}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
-  const resetRotation = () => setRotate({ x: 0, y: 0 });
-
-  // Minimum swipe distance (in px)
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-    if (isLeftSwipe) nextCert();
-    if (isRightSwipe) prevCert();
-  };
-
-  if (filteredCertificates.length === 0 && searchQuery !== "") {
-    return null;
-  }
+  if (filteredCertificates.length === 0 && searchQuery !== "") return null;
 
   return (
     <section id="certificates" className="certificates-section">
       <div className="container">
         <h2 className="section-title">
           <span className="title-emoji">📜</span>
-          <span className="title-text">Professional Certifications</span>
+          <span className="title-text">Official Credentials & PDF Vault</span>
         </h2>
-        <p className="section-subtitle">Click on any certificate to view in gallery and hear details</p>
-        <div className="certificates-grid">
-          {filteredCertificates.map((cert, index) => (
-            <div
-              key={index}
-              className="certificate-card glass-morphism"
-              onClick={() => openGallery(index)}
-              onMouseEnter={() => {
-                if (selectedCertIndex === null) {
-                  speak(`${cert.title}. Issued by ${cert.issuer}`);
-                }
-              }}
-              onMouseLeave={() => {
-                if (selectedCertIndex === null) {
-                  stop();
-                }
-              }}
-            >
-              <div className="certificate-image-container">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="certificate-img"
-                  style={{
-                    transform: `
-                      ${cert.initialRotation ? `rotate(${cert.initialRotation}deg)` : ''}
-                      ${cert.initialScale ? `scale(${cert.initialScale})` : ''}
-                    `.trim() || 'none'
-                  }}
-                />
-                <div className="tap-hint">🔍 View & Listen 🔊</div>
-              </div>
-              <div className="certificate-info">
-                <h3>{cert.title}</h3>
-                <span className="issuer">{cert.issuer}</span>
-              </div>
+
+        {/* PDF SECTION - ADVANCED LOOK */}
+        {pdfCertificates.length > 0 && (
+          <div className="cert-sub-section pdf-exclusive">
+            <h3 className="sub-section-title">🛡️ High-Security Document Vault</h3>
+            <div className="certificates-grid pdf-grid">
+              {pdfCertificates.map((cert, index) => (
+                <div key={index} className="certificate-card pdf-card glass-morphism" onClick={() => openGallery(cert)}>
+                  <div className="certificate-image-container">
+                    <div className="pdf-placeholder">
+                      <div className="pdf-glow"></div>
+                      <span className="pdf-icon">📄</span>
+                      <span className="pdf-label">VERIFIED PDF</span>
+                    </div>
+                    <div className="card-actions">
+                      <button className="action-btn view-btn">🔍 Full Screen</button>
+                      <button className="action-btn download-btn-main" onClick={(e) => handleDownload(e, cert)}>
+                         📥 Download Certificate
+                      </button>
+                    </div>
+                  </div>
+                  <div className="certificate-info">
+                    <span className="issuer">{cert.issuer}</span>
+                    <h3>{cert.title}</h3>
+                    <div className="cert-type-badge pdf">Level: Official Document</div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        )}
+
+        {/* IMAGE GALLERY SECTION */}
+        {galleryCertificates.length > 0 && (
+          <div className="cert-sub-section">
+            <h3 className="sub-section-title">🌐 Digital E-Certificates</h3>
+            <div className="certificates-grid">
+              {galleryCertificates.map((cert, index) => (
+                <div key={index} className="certificate-card glass-morphism" onClick={() => openGallery(cert)}>
+                  <div className="certificate-image-container">
+                    <img src={cert.image} alt={cert.title} className="certificate-img" style={{ transform: `${cert.initialRotation ? `rotate(${cert.initialRotation}deg)` : ''} ${cert.initialScale ? `scale(${cert.initialScale})` : ''}`.trim() || 'none' }} />
+                    <div className="card-actions">
+                      <button className="action-btn view-btn">🔍 View</button>
+                      <button className="action-btn download-btn" onClick={(e) => handleDownload(e, cert)}>📥 Save</button>
+                    </div>
+                  </div>
+                  <div className="certificate-info">
+                    <span className="issuer">{cert.issuer}</span>
+                    <h3>{cert.title}</h3>
+                    <div className="cert-type-badge">Certified Professional</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      {selectedCertIndex !== null && filteredCertificates[selectedCertIndex] && (
-        <div
-          className="cert-modal-overlay"
-          onClick={closeGallery}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={resetRotation}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          style={{
-            background: `radial-gradient(circle at ${((rotate.y / -10) + 1) * 50}% ${((rotate.x / 10) + 1) * 50}%, rgba(59, 130, 246, 0.15) 0%, rgba(2, 6, 23, 0.9) 70%)`
-          }}
-        >
-          <div
-            className="cert-modal-content"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-              transition: rotate.x === 0 && rotate.y === 0 ? 'transform 0.5s ease' : 'none'
-            }}
-          >
+      {/* GALLERY MODAL */}
+      {selectedCertIndex !== null && (
+        <div className="cert-modal-overlay" onClick={closeGallery}>
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="cert-modal-header">
               <div className="cert-modal-controls">
-                <button className="cert-control-btn rotate" onClick={rotateImage} title="Rotate Image">
-                  🔄 Rotate
+                {certificatesData[selectedCertIndex].type !== 'pdf' && (
+                  <button className="cert-control-btn" onClick={() => setRotation(r => (r + 90) % 360)}>🔄 Rotate</button>
+                )}
+                <button className="cert-control-btn download-highlight" onClick={(e) => handleDownload(e, certificatesData[selectedCertIndex])}>
+                   📥 Download Now
                 </button>
               </div>
               <button className="cert-modal-close" onClick={closeGallery}>✕</button>
             </div>
+
             <div className="cert-modal-body">
-              <button className="cert-nav-btn prev" onClick={prevCert} title="Previous Certificate">
-                <span className="arrow-icon">❮</span>
-              </button>
+              <button className="cert-nav-btn prev" onClick={() => navigate('prev')}>❮</button>
               <div className="cert-image-display">
-                <img
-                  src={filteredCertificates[selectedCertIndex].image}
-                  alt={filteredCertificates[selectedCertIndex].title}
-                  className="modal-cert-img"
-                  style={{
-                    transform: `rotate(${rotation}deg) scale(${filteredCertificates[selectedCertIndex].initialScale || 1})`
-                  }}
-                />
+                {certificatesData[selectedCertIndex].type === 'pdf' ? (
+                  <div className="pdf-preview-box advanced">
+                    <div className="pdf-icon-floating">📄</div>
+                    <h4>{certificatesData[selectedCertIndex].title}</h4>
+                    <p>Official high-resolution document verified by {certificatesData[selectedCertIndex].issuer}</p>
+                    <div className="modal-actions-container">
+                      <a
+                        href={certificatesData[selectedCertIndex].file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pdf-open-btn primary"
+                      >
+                         🚀 Open in Viewer
+                      </a>
+                      <button className="pdf-open-btn secondary" onClick={(e) => handleDownload(e, certificatesData[selectedCertIndex])}>
+                         📥 Save Offline
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <img src={certificatesData[selectedCertIndex].image} alt="" className="modal-cert-img" style={{ transform: `rotate(${rotation}deg) scale(${certificatesData[selectedCertIndex].initialScale || 1})` }} />
+                )}
               </div>
-              <button className="cert-nav-btn next" onClick={nextCert} title="Next Certificate">
-                <span className="arrow-icon">❯</span>
-              </button>
+              <button className="cert-nav-btn next" onClick={() => navigate('next')}>❯</button>
             </div>
+
             <div className="cert-modal-footer">
-              <h3>{filteredCertificates[selectedCertIndex].title}</h3>
-              <span className="modal-issuer">{filteredCertificates[selectedCertIndex].issuer}</span>
-              <p>{filteredCertificates[selectedCertIndex].description}</p>
-              <div className="cert-counter">
-                {selectedCertIndex + 1} / {filteredCertificates.length}
-              </div>
+              <span className="modal-issuer">{certificatesData[selectedCertIndex].issuer}</span>
+              <h3>{certificatesData[selectedCertIndex].title}</h3>
+              <p>{certificatesData[selectedCertIndex].description}</p>
+              <div className="cert-counter">{selectedCertIndex + 1} / {certificatesData.length}</div>
             </div>
           </div>
         </div>

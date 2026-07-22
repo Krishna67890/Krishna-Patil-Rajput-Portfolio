@@ -23,7 +23,7 @@ An immersive, high-performance portfolio built with **React**, **Vite**, and **G
 
 - **Interactive Voice Narration**: Uses the `Web Speech API` to provide audio descriptions for projects, certifications, and professional background. Just hover or click to listen!
 - **Dynamic Project Search**: A real-time search engine located in the Advanced Projects section that filters content across the entire portfolio by title, technology, or description.
-- **Interactive Certificates Gallery**: A dedicated section for achievements featuring a full-screen gallery with manual rotation controls, modern glass-morphic navigation, touch/swipe support, and automated voice narration.
+- **Interactive Certificates Gallery**: A multi-layered section featuring a **Premium Document Vault** for official PDFs and a high-end gallery for e-certificates, complete with 3D rotation, download capabilities, and automated voice narration.
 - **Developer Terminal**: A built-in CLI terminal (Press `T` or `` ` ``) for a unique navigation experience.
 - **Adaptive Theme Engine**: Seamlessly switches between Dark and Light modes, ensuring optimal readability and aesthetic appeal across the entire UI.
 - **Universal Navigation**: A precision-aligned header designed for perfect functionality on desktops, tablets, and smartphones.
@@ -38,7 +38,7 @@ An immersive, high-performance portfolio built with **React**, **Vite**, and **G
 
 - ✅ **Project Expansion**: Integrated 7+ new projects including EventPulse AI, Logimind AI, and Minecraft 3D.
 - ✅ **Visual Consistency**: Standardized primary action icons to the globe emoji (`🌐`) and cleaned codebase for Vercel deployment.
-- ✅ **Added Professional Certificates**: Integrated 11+ certificates with click-to-speak functionality.
+- ✅ **Added Professional Certificates**: Integrated 18+ certificates with a dedicated PDF vault, download functionality, and click-to-speak descriptions.
 - ✅ **Search Implementation**: Added a global search bar to the Advanced Projects section.
 - ✅ **Orientation & Scaling**: Fixed image rotations and applied custom scaling for certificates.
 - ✅ **Voice Stability**: Refined the speech engine with persistent references to prevent audio cutting and implemented an error filter to silence "interrupted" logs during rapid navigation.
