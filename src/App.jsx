@@ -79,6 +79,8 @@ function App() {
         onOpenGame={() => setIsGameOpen(true)}
         onOpenTerminal={() => setIsTerminalOpen(true)}
         onOpenSpotify={() => setIsSpotifyOpen(true)}
+        isSpotifyOpen={isSpotifyOpen}
+        setIsSpotifyOpen={setIsSpotifyOpen}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />

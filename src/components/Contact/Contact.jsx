@@ -5,6 +5,9 @@ import './Contact.css';
 // Logo Imports
 import githubLogo from '../../assets/Links/Github logo.jpg';
 import linktreeLogo from '../../assets/Links/Linktree.png';
+import linkedinLogo from '../../assets/Linked in 1.png';
+import youtubeLogo from '../../assets/Youtube 1.png';
+import bloggerLogo from '../../assets/Krishna Bloggers 1.jpg';
 
 const Contact = () => {
   const { speak } = usePortfolioVoice();
@@ -84,15 +87,15 @@ const Contact = () => {
                     <span className="social-text">GitHub</span>
                   </a>
                   <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" className="social-link linkedin" onMouseEnter={() => speak("Connect with me professionally on LinkedIn.")}>
-                    <span className="social-icon">💼</span>
+                    <img src={linkedinLogo} alt="LinkedIn" className="contact-social-img" />
                     <span className="social-text">LinkedIn</span>
                   </a>
                   <a href="https://krishnablogy.blogspot.com/" target="_blank" rel="noopener noreferrer" className="social-link blogger" onMouseEnter={() => speak("Read my latest tech articles on my Blog.")}>
-                    <span className="social-icon">📝</span>
+                    <img src={bloggerLogo} alt="Blogger" className="contact-social-img" />
                     <span className="social-text">Blogger</span>
                   </a>
                   <a href="https://www.youtube.com/@atharva_gaming_yt" target="_blank" rel="noopener noreferrer" className="social-link youtube" onMouseEnter={() => speak("Watch my coding and gaming content on YouTube.")}>
-                    <span className="social-icon">📺</span>
+                    <img src={youtubeLogo} alt="YouTube" className="contact-social-img" />
                     <span className="social-text">YouTube</span>
                   </a>
                   <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer" className="social-link linktree" onMouseEnter={() => speak("View all my links in one place on Linktree.")}>
@@ -100,11 +103,11 @@ const Contact = () => {
                     <span className="social-text">Linktree</span>
                   </a>
                   <a href="https://www.instagram.com/mr.Krishna_patil_12" target="_blank" rel="noopener noreferrer" className="social-link instagram" onMouseEnter={() => speak("Follow my personal journey on Instagram.")}>
-                    <span className="social-icon">📸</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" className="contact-social-img" />
                     <span className="social-text">Instagram</span>
                   </a>
                   <a href="https://www.whatsapp.com/channel/0029Vb6Ib4ULI8YgwrV7C21C" target="_blank" rel="noopener noreferrer" className="social-link whatsapp" onMouseEnter={() => speak("Join my WhatsApp channel for regular updates.")}>
-                    <span className="social-icon">💬</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="contact-social-img" />
                     <span className="social-text">WhatsApp</span>
                   </a>
                 </div>

@@ -3,6 +3,14 @@ import ProjectCard from '../ProjectCard';
 import './Projects.css';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 
+// Logo Imports
+import githubLogo from '../../assets/Links/Github logo.jpg';
+import microsoftLogo from '../../assets/Links/Microsoft logo.png';
+import kaggleLogo from '../../assets/Links/Kaggle logo .png';
+import credlyLogo from '../../assets/Links/credly logo.png';
+import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
+import resumeLogo from '../../assets/Links/resume logo.jpg';
+
 // Importing assets
 import tech1 from '../../assets/TechFundamentals 1.png';
 import tech2 from '../../assets/TechFundamentals 2.png';
@@ -412,12 +420,24 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
           </div>
 
           <div className="project-quick-links">
-            <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">🐙 GitHub</a>
-            <a href={resumePdf} download="Krishna_Patil_Resume.pdf" title="Resume">📄 Resume</a>
-            <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">Ⓜ️ Microsoft</a>
-            <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">📊 Kaggle</a>
-            <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">🏅 Credly</a>
-            <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">🏆 Hack2Skills</a>
+            <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <img src={githubLogo} alt="GitHub" className="mini-logo" /> GitHub
+            </a>
+            <a href={resumePdf} download="Krishna_Patil_Resume.pdf" title="Resume">
+              <img src={resumeLogo} alt="Resume" className="mini-logo" /> Resume
+            </a>
+            <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">
+              <img src={microsoftLogo} alt="Microsoft" className="mini-logo" /> Microsoft
+            </a>
+            <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">
+              <img src={kaggleLogo} alt="Kaggle" className="mini-logo" /> Kaggle
+            </a>
+            <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">
+              <img src={credlyLogo} alt="Credly" className="mini-logo" /> Credly
+            </a>
+            <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">
+              <img src={hack2skillLogo} alt="Hack2Skills" className="mini-logo" /> Hack2Skills
+            </a>
           </div>
         </div>
 

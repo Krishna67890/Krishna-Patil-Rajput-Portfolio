@@ -4,8 +4,9 @@ import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Header.css';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import profileLogo from '../../assets/Krishna logo.jpg';
+import SpotifyPopup from './SpotifyPopup';
 
-const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify }) => {
+const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify, isSpotifyOpen, setIsSpotifyOpen }) => {
   const { speak } = usePortfolioVoice();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
