@@ -14,6 +14,7 @@ import Skills from './components/Skills';
 import Socials from './components/Socials';
 import Contact from './components/Contact/Contact';
 import Background from './components/Background';
+import EmberBackground from './components/EmberBackground';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar/Sidebar';
 import Journey from './components/Journey/Journey';
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <div className="App" ref={appRef}>
+      <EmberBackground />
       <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }}></div>
 
       <Sidebar

@@ -1,0 +1,21 @@
+.ember-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: transparent;
+}
+
+[data-theme='dark'] .ember-canvas {
+  /* Embers look better on deep dark backgrounds */
+  opacity: 0.8;
+}
+
+[data-theme='light'] .ember-canvas {
+  /* Soften embers for light mode */
+  opacity: 0.4;
+  filter: saturate(0.8);
+}

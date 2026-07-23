@@ -1,6 +1,6 @@
 .background-section {
   padding: 100px 0;
-  background: var(--bg-color); /* Updated to use theme variable */
+  background: transparent;
 }
 
 .background-grid {

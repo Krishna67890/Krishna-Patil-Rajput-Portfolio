@@ -55,7 +55,7 @@ body {
 section {
   padding: 8rem 0;
   position: relative;
-  /* Removed fixed opacity:0 to prevent invisible site if JS fails */
+  background: transparent !important;
 }
 
 .section-title {

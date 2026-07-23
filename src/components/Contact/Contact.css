@@ -10,7 +10,7 @@
 
 .contact-section {
   padding: 100px 0;
-  background: var(--bg-color);
+  background: transparent;
   color: var(--text-color);
   position: relative;
 }
