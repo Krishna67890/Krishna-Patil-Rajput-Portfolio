@@ -179,9 +179,6 @@ const Certificates = ({ searchQuery }) => {
       cert.description.toLowerCase().includes(searchQuery.toLowerCase())
     ), [searchQuery]);
 
-  const pdfCertificates = useMemo(() => filteredCertificates.filter(c => c.type === 'pdf'), [filteredCertificates]);
-  const galleryCertificates = useMemo(() => filteredCertificates.filter(c => c.type !== 'pdf'), [filteredCertificates]);
-
   const openGallery = (cert) => {
     const globalIndex = certificatesData.findIndex(c => c.title === cert.title);
     setSelectedCertIndex(globalIndex);
