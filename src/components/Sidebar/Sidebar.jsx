@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Sidebar.css';
+import profileLogo from '../../assets/Krishna logo.jpg';
 
 const Sidebar = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
   const { speak } = usePortfolioVoice();
@@ -42,7 +43,15 @@ const Sidebar = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
         </button>
 
         <div className="sidebar-logo">
-          <div className="logo-icon" onMouseEnter={() => onOpenTerminal && onOpenTerminal()}>KPR</div>
+          <img
+            src={profileLogo}
+            alt="KPR"
+            className="sidebar-logo-img"
+            onMouseEnter={() => {
+              speak("Launch the Command Center terminal.");
+              onOpenTerminal && onOpenTerminal();
+            }}
+          />
         </div>
 
         <nav className="sidebar-nav">

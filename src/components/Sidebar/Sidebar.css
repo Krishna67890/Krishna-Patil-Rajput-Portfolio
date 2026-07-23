@@ -46,20 +46,20 @@
   justify-content: center;
 }
 
-.logo-icon {
+.sidebar-logo-img {
   width: 60px;
   height: 60px;
-  background: var(--rgb-border);
-  background-size: 400%;
   border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 900;
-  font-size: 1.5rem;
-  animation: rgb-text-anim 10s linear infinite;
+  object-fit: cover;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.sidebar-logo-img:hover {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 0 30px var(--primary-color);
 }
 
 .sidebar-nav {

@@ -3,6 +3,7 @@ import HamburgerMenu from './HamburgerMenu';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Header.css';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
+import profileLogo from '../../assets/Krishna logo.jpg';
 
 const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
   const { speak } = usePortfolioVoice();
@@ -59,6 +60,7 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
     <header className="header">
       <div className="container">
         <div className="logo">
+          <img src={profileLogo} alt="Logo" className="header-logo-img" />
           <span>Krishna Patil Rajput</span>
         </div>
 

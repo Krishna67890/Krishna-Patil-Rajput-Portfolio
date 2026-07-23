@@ -15,6 +15,7 @@ import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 const Hero = () => {
   const { speak, stop, isSpeaking, voiceType, toggleVoiceType } = usePortfolioVoice();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
   const modalRef = useRef(null);
   const modalContentRef = useRef(null);
   const cvLink = "https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A";
@@ -39,15 +40,28 @@ const Hero = () => {
 
   const openModal = () => {
     setIsModalOpen(true);
-    speak("Opening official identity profile.");
+    setIsRevealed(false);
+    speak("Opening official identity profile. Identity currently masked.");
   };
 
   const closeModal = () => {
     const tl = gsap.timeline({
-      onComplete: () => setIsModalOpen(false)
+      onComplete: () => {
+        setIsModalOpen(false);
+        setIsRevealed(false);
+      }
     });
     tl.to(modalContentRef.current, { scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in" })
       .to(modalRef.current, { opacity: 0, duration: 0.2 }, "-=0.1");
+  };
+
+  const toggleReveal = () => {
+    if (!isRevealed) {
+      speak("Identity verified. Displaying original subject photo.");
+    } else {
+      speak("Re-engaging identity mask.");
+    }
+    setIsRevealed(!isRevealed);
   };
 
   useEffect(() => {
@@ -199,23 +213,56 @@ const Hero = () => {
       {/* Cinematic Logo Modal */}
       {isModalOpen && (
         <div className="cinematic-modal-overlay" ref={modalRef} onClick={closeModal}>
-          <div className="modal-close-hint">ESC to close or click anywhere</div>
+          <div className="modal-close-hint">ESC TO EXIT • CLICK PHOTO TO ANALYZE</div>
           <div
             className="cinematic-modal-content"
             ref={modalContentRef}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-image-container">
-              <img src={originalPhoto} alt="Krishna Patil Rajput Original" className="original-photo" />
-              <div className="modal-info-overlay">
-                <span className="bounty-badge">BOUNTY: ELITE DEVELOPER</span>
-                <h2>Krishna Patil Rajput</h2>
-                <p>3rd Year IT Student | Full-Stack Expert</p>
-                <div className="modal-tags">
-                  <span>#MERN</span> <span>#AI</span> <span>#Robotics</span> <span>#Nashik</span>
+            <div className="modal-image-reveal-container" onClick={toggleReveal}>
+               <img src={originalPhoto} alt="Original" className={`reveal-img original ${isRevealed ? 'visible' : ''}`} />
+               <img src={profileLogo} alt="Logo" className={`reveal-img logo-mask ${!isRevealed ? 'visible' : ''}`} />
+               {!isRevealed && (
+                 <div className="reveal-scanner">
+                   <div className="scanner-line"></div>
+                 </div>
+               )}
+               <div className="reveal-status-tag">{isRevealed ? "IDENTITY VERIFIED" : "IDENTITY MASKED"}</div>
+            </div>
+
+            <div className="modal-data-hud">
+              <div className="hud-header">
+                <span className="bounty-label">BOUNTY: ELITE DEVELOPER</span>
+                <h2 className="hud-name">KRISHNA PATIL RAJPUT</h2>
+              </div>
+
+              <div className="hud-stats-grid">
+                <div className="stat-box">
+                  <span className="stat-label">CLASS</span>
+                  <span className="stat-value">3RD YEAR IT SPECIALIST</span>
+                </div>
+                <div className="stat-box">
+                  <span className="stat-label">ORIGIN</span>
+                  <span className="stat-value">NASHIK, MH</span>
+                </div>
+                <div className="stat-box">
+                  <span className="stat-label">SPECIALTY</span>
+                  <span className="stat-value">MERN & ROBOTICS</span>
+                </div>
+                <div className="stat-box">
+                  <span className="stat-label">THREAT LEVEL</span>
+                  <span className="stat-value high">MAXIMUM</span>
                 </div>
               </div>
+
+              <div className="hud-footer">
+                <div className="hud-tags">
+                  <span>#REACT</span><span>#GSAP</span><span>#NODE</span><span>#AI</span>
+                </div>
+                <button className="hud-action-btn" onClick={closeModal}>CLOSE PROFILE</button>
+              </div>
             </div>
+
             <button className="modal-close-btn" onClick={closeModal}>✕</button>
           </div>
         </div>
