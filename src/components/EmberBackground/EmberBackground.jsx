@@ -3,6 +3,7 @@ import './EmberBackground.css';
 
 const EmberBackground = () => {
   const canvasRef = useRef(null);
+  const mouse = useRef({ x: null, y: null, radius: 180, isPressed: false });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -10,102 +11,138 @@ const EmberBackground = () => {
     let animationFrameId;
     let particles = [];
 
-    // Increased particle count for a richer "dust" feel
-    const particleCount = 80;
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 150 : 450; // Premium count
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      initParticles();
+    };
+
+    const handleMouseMove = (e) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    };
+
+    const handleMouseDown = () => { mouse.current.isPressed = true; };
+    const handleMouseUp = () => { mouse.current.isPressed = false; };
+
+    const handleClick = () => {
+        // Explosion/Ripple effect on click
+        particles.forEach(p => {
+            const dx = p.x - mouse.current.x;
+            const dy = p.y - mouse.current.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 400) {
+                const force = (400 - distance) / 5;
+                const angle = Math.atan2(dy, dx);
+                p.vx += Math.cos(angle) * force;
+                p.vy += Math.sin(angle) * force;
+            }
+        });
     };
 
     window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('click', handleClick);
     resize();
 
     class Particle {
       constructor() {
-        this.init();
+        this.reset();
       }
 
-      init() {
+      reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3.5 + 1; // 1px - 4.5px
+        this.vx = (Math.random() - 0.5) * 1.2;
+        this.vy = (Math.random() - 0.5) * 1.2;
+        this.opacity = Math.random() * 0.5 + 0.2;
 
-        // Parallax depth
-        this.z = Math.random() * 1 + 0.5;
-        this.size = (Math.random() * 2 + 0.8) * this.z;
-
-        // Drift physics: Both upward and downward drifting for a "floating in space" feel
-        this.speedX = (Math.random() - 0.5) * 0.4 * this.z;
-        this.speedY = (Math.random() - 0.5) * 0.6 * this.z;
-
-        this.opacity = 0;
-        this.maxOpacity = (Math.random() * 0.5 + 0.3) / (this.z * 0.5 + 0.5);
-        this.fadeSpeed = Math.random() * 0.003 + 0.001;
-        this.growing = true;
-
-        // One Piece Bounty / Cyberpunk Ember Palette: Dark Red, Orange, Soft Amber
         const colors = [
-          { r: 139, g: 0, b: 0 },     // Dark Red
-          { r: 204, g: 0, b: 0 },     // Mid Red
-          { r: 255, g: 69, b: 0 },    // Orange Red
-          { r: 255, g: 140, b: 0 },   // Dark Orange
-          { r: 255, g: 191, b: 0 },   // Amber
-          { r: 255, g: 215, b: 0 }    // Soft Gold
+          { r: 59, g: 130, b: 246 },   // Blue
+          { r: 6, g: 182, b: 212 },    // Cyan
+          { r: 168, g: 85, b: 247 },   // Purple
+          { r: 255, g: 255, b: 255 },  // White
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        // Mouse Interactions
+        if (mouse.current.x != null) {
+            let dx = mouse.current.x - this.x;
+            let dy = mouse.current.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Smooth opacity pulse
-        if (this.growing) {
-          this.opacity += this.fadeSpeed;
-          if (this.opacity >= this.maxOpacity) this.growing = false;
-        } else {
-          this.opacity -= this.fadeSpeed;
-          if (this.opacity <= 0) {
-            this.init();
-            this.y = canvas.height + 10; // Respawn at bottom
-          }
+            if (distance < mouse.current.radius) {
+                const force = (mouse.current.radius - distance) / mouse.current.radius;
+
+                if (mouse.current.isPressed) {
+                    // ATTRACT on click (hold)
+                    this.vx += (dx / distance) * force * 0.8;
+                    this.vy += (dy / distance) * force * 0.8;
+                } else {
+                    // REPEL on move
+                    this.vx -= (dx / distance) * force * 0.6;
+                    this.vy -= (dy / distance) * force * 0.6;
+                }
+            }
         }
 
-        // Screen wrap/reset
-        if (this.x < -20) this.x = canvas.width + 20;
-        if (this.x > canvas.width + 20) this.x = -20;
-        if (this.y < -20) {
-           this.growing = false; // Trigger fade out if reaches top
-        }
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Friction
+        this.vx *= 0.98;
+        this.vy *= 0.98;
+
+        // Bouncing logic
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+        // Ensure minimum velocity for floating feel
+        if (Math.abs(this.vx) < 0.1) this.vx += (Math.random() - 0.5) * 0.5;
+        if (Math.abs(this.vy) < 0.1) this.vy += (Math.random() - 0.5) * 0.5;
       }
 
       draw() {
         ctx.beginPath();
-        // Glowing radial gradient for each "ember"
-        const gradient = ctx.createRadialGradient(
-          this.x, this.y, 0,
-          this.x, this.y, this.size * 3
-        );
-
-        const colorStr = `${this.color.r}, ${this.color.g}, ${this.color.b}`;
-        gradient.addColorStop(0, `rgba(${colorStr}, ${this.opacity})`);
-        gradient.addColorStop(0.4, `rgba(${colorStr}, ${this.opacity * 0.5})`);
-        gradient.addColorStop(1, `rgba(${colorStr}, 0)`);
-
-        ctx.fillStyle = gradient;
-        // Circular ember nodes
-        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity})`;
         ctx.fill();
 
-        // Add a tiny core for brighter sparkles
-        if (this.opacity > 0.3) {
-            ctx.beginPath();
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.5})`;
-            ctx.arc(this.x, this.y, this.size * 0.5, 0, Math.PI * 2);
-            ctx.fill();
+        if (this.size > 2.5) {
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0.6)`;
         }
       }
     }
+
+    const connect = () => {
+        const maxDistance = isMobile ? 70 : 120;
+        for (let a = 0; a < particles.length; a++) {
+            for (let b = a + 1; b < particles.length; b++) {
+                let dx = particles[a].x - particles[b].x;
+                let dy = particles[a].y - particles[b].y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < maxDistance) {
+                    let opacity = 1 - (distance / maxDistance);
+                    ctx.strokeStyle = `rgba(100, 150, 255, ${opacity * 0.2})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[a].x, particles[a].y);
+                    ctx.lineTo(particles[b].x, particles[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    };
 
     const initParticles = () => {
       particles = [];
@@ -114,17 +151,16 @@ const EmberBackground = () => {
       }
     };
 
-    initParticles();
-
     const animate = () => {
-      // Clear with slight trailing could be added here for motion blur,
-      // but pure clear is cleaner for dust.
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.shadowBlur = 0;
 
       particles.forEach(p => {
         p.update();
         p.draw();
       });
+
+      connect();
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -132,11 +168,15 @@ const EmberBackground = () => {
 
     return () => {
       window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('click', handleClick);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="ember-canvas" aria-hidden="true" />;
+  return <canvas ref={canvasRef} className="ember-canvas" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, pointerEvents: 'none', background: 'transparent' }} />;
 };
 
 export default EmberBackground;

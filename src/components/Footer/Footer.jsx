@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
+import profileLogo from '../../assets/Krishna logo.jpg';
 import './Footer.css';
 
 const Footer = () => {
@@ -12,8 +13,11 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo" onMouseEnter={() => speak("You are viewing the official portfolio of Krishna Patil Rajput, Full-Stack and Game Developer.")}>
-              <span className="logo-text">Krishna Patil Rajput</span>
-              <div className="logo-subtitle">Full-Stack & Game Developer</div>
+              <img src={profileLogo} alt="Logo" className="footer-logo-img" />
+              <div className="logo-text-wrapper">
+                <span className="logo-text">Krishna Patil Rajput</span>
+                <div className="logo-subtitle">Full-Stack & Game Developer</div>
+              </div>
             </div>
             <p className="footer-description" onMouseEnter={() => speak("I build innovative solutions with modern technologies and creative problem-solving approaches, specializing in MERN stack and AI-powered applications.")}>
               Building innovative solutions with modern technologies and creative problem-solving approaches.

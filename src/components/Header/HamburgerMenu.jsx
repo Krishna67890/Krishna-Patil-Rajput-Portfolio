@@ -1,5 +1,7 @@
 import React from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
+import githubLogo from '../../assets/Links/Github logo.jpg';
+import linkedinLogo from '../../assets/Linked in 1.png';
 import './HamburgerMenu.css';
 
 const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
@@ -48,8 +50,14 @@ const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
           ))}
         </ul>
         <div className="social-links-mobile">
-          <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("View my GitHub profile.")}>GitHub</a>
-          <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("Connect with me on LinkedIn.")}>LinkedIn</a>
+          <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("View my GitHub profile.")}>
+            <img src={githubLogo} alt="GitHub" className="mobile-social-logo" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("Connect with me on LinkedIn.")}>
+            <img src={linkedinLogo} alt="LinkedIn" className="mobile-social-logo" />
+            LinkedIn
+          </a>
         </div>
       </div>
     </div>

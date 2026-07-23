@@ -7,6 +7,7 @@ import microsoftLogo from '../../assets/Links/Microsoft logo.png';
 import kaggleLogo from '../../assets/Links/Kaggle logo .png';
 import credlyLogo from '../../assets/Links/credly logo.png';
 import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
+import linkedinLogo from '../../assets/Linked in 1.png';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import originalPhoto from '../../assets/Krishna-Original.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
@@ -16,6 +17,8 @@ const Hero = () => {
   const { speak, stop, isSpeaking, voiceType, toggleVoiceType } = usePortfolioVoice();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHoveringImage, setIsHoveringImage] = useState(false);
   const modalRef = useRef(null);
   const modalContentRef = useRef(null);
   const cvLink = "https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A";
@@ -57,11 +60,19 @@ const Hero = () => {
 
   const toggleReveal = () => {
     if (!isRevealed) {
-      speak("Identity verified. Displaying original subject photo.");
+      speak("Identity verified. Scanning subject details.");
     } else {
       speak("Re-engaging identity mask.");
     }
     setIsRevealed(!isRevealed);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!modalContentRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePos({ x, y });
   };
 
   useEffect(() => {
@@ -127,7 +138,9 @@ const Hero = () => {
                 <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">
                   <img src={githubLogo} alt="GitHub" className="mini-logo" />
                 </a>
-                <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
+                <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                  <img src={linkedinLogo} alt="LinkedIn" className="mini-logo" />
+                </a>
                 <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer" title="Linktree">
                   <img src={linktreeLogo} alt="Linktree" className="mini-logo" />
                 </a>
@@ -219,9 +232,30 @@ const Hero = () => {
             ref={modalContentRef}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-image-reveal-container" onClick={toggleReveal}>
+            <div
+              className="modal-image-reveal-container"
+              onClick={toggleReveal}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={() => setIsHoveringImage(true)}
+              onMouseLeave={() => setIsHoveringImage(false)}
+            >
                <img src={originalPhoto} alt="Original" className={`reveal-img original ${isRevealed ? 'visible' : ''}`} />
                <img src={profileLogo} alt="Logo" className={`reveal-img logo-mask ${!isRevealed ? 'visible' : ''}`} />
+
+               {isHoveringImage && !isRevealed && (
+                 <div
+                   className="magnifying-circle"
+                   style={{
+                     left: `${mousePos.x}%`,
+                     top: `${mousePos.y}%`,
+                     backgroundImage: `url(${originalPhoto})`,
+                     backgroundPosition: `${mousePos.x}% ${mousePos.y}%`
+                   }}
+                 >
+                   <div className="magnifying-glass-shine"></div>
+                 </div>
+               )}
+
                {!isRevealed && (
                  <div className="reveal-scanner">
                    <div className="scanner-line"></div>

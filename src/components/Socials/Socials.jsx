@@ -9,12 +9,13 @@ import microsoftLogo from '../../assets/Links/Microsoft logo.png';
 import kaggleLogo from '../../assets/Links/Kaggle logo .png';
 import credlyLogo from '../../assets/Links/credly logo.png';
 import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
+import linkedinLogo from '../../assets/Linked in 1.png';
 
 const Socials = () => {
   const { speak } = usePortfolioVoice();
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/krishna67890', icon: githubLogo, isImg: true, desc: "Check out my open source projects on GitHub." },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/krishna-patil-rajput-b66b03340', icon: '💼', isImg: false, desc: "Connect with me professionally on LinkedIn." },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/krishna-patil-rajput-b66b03340', icon: linkedinLogo, isImg: true, desc: "Connect with me professionally on LinkedIn." },
     { name: 'Microsoft', url: 'https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/', icon: microsoftLogo, isImg: true, desc: "View my Microsoft Learn profile and achievements." },
     { name: 'Kaggle', url: 'https://www.kaggle.com/krishnapatilrajput', icon: kaggleLogo, isImg: true, desc: "Check out my data science projects on Kaggle." },
     { name: 'Credly', url: 'https://www.credly.com/users/krishna-patil-rajput/', icon: credlyLogo, isImg: true, desc: "View my verified professional certifications on Credly." },

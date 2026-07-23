@@ -1,21 +1,20 @@
 .ember-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  pointer-events: none;
-  background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background: #020617; /* Very dark slate/blue background base */
 }
 
-[data-theme='dark'] .ember-canvas {
-  /* Embers look better on deep dark backgrounds */
-  opacity: 0.8;
+/* Ensure content is above the canvas but can still see it */
+main {
+    position: relative;
+    z-index: 1;
 }
 
-[data-theme='light'] .ember-canvas {
-  /* Soften embers for light mode */
-  opacity: 0.4;
-  filter: saturate(0.8);
+section {
+    background: transparent !important;
 }

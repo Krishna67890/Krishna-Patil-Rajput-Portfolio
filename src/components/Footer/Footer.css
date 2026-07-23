@@ -30,6 +30,17 @@
 
 .footer-logo {
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  object-fit: cover;
 }
 
 .footer-logo .logo-text {
@@ -39,6 +50,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
+  display: block;
 }
 
 .footer-logo .logo-subtitle {
