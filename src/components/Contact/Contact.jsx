@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Contact.css';
 
+// Logo Imports
+import githubLogo from '../../assets/Links/Github logo.jpg';
+import linktreeLogo from '../../assets/Links/Linktree.png';
+
 const Contact = () => {
   const { speak } = usePortfolioVoice();
   const [formData, setFormData] = useState({
@@ -76,7 +80,7 @@ const Contact = () => {
                 <h4 onMouseEnter={() => speak("Connect with me across these platforms.")}>Connect with me:</h4>
                 <div className="social-grid">
                   <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" className="social-link github" onMouseEnter={() => speak("Check out my open source projects on GitHub.")}>
-                    <span className="social-icon">🐙</span>
+                    <img src={githubLogo} alt="GitHub" className="contact-social-img" />
                     <span className="social-text">GitHub</span>
                   </a>
                   <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" className="social-link linkedin" onMouseEnter={() => speak("Connect with me professionally on LinkedIn.")}>
@@ -92,7 +96,7 @@ const Contact = () => {
                     <span className="social-text">YouTube</span>
                   </a>
                   <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer" className="social-link linktree" onMouseEnter={() => speak("View all my links in one place on Linktree.")}>
-                    <span className="social-icon">🌲</span>
+                    <img src={linktreeLogo} alt="Linktree" className="contact-social-img" />
                     <span className="social-text">Linktree</span>
                   </a>
                   <a href="https://www.instagram.com/mr.Krishna_patil_12" target="_blank" rel="noopener noreferrer" className="social-link instagram" onMouseEnter={() => speak("Follow my personal journey on Instagram.")}>

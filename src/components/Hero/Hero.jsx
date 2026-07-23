@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Hero.css';
+import gsap from 'gsap';
 import linktreeLogo from '../../assets/Links/Linktree.png';
+import githubLogo from '../../assets/Links/Github logo.jpg';
+import microsoftLogo from '../../assets/Links/Microsoft logo.png';
+import kaggleLogo from '../../assets/Links/Kaggle logo .png';
+import credlyLogo from '../../assets/Links/credly logo.png';
+import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
 import profileLogo from '../../assets/Krishna logo.jpg';
+import originalPhoto from '../../assets/Krishna-Original.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
 const Hero = () => {
   const { speak, stop, isSpeaking, voiceType, toggleVoiceType } = usePortfolioVoice();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef(null);
+  const modalContentRef = useRef(null);
   const cvLink = "https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A";
 
   const introText = `
@@ -27,6 +37,35 @@ const Hero = () => {
     speak(sentence);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+    speak("Opening official identity profile.");
+  };
+
+  const closeModal = () => {
+    const tl = gsap.timeline({
+      onComplete: () => setIsModalOpen(false)
+    });
+    tl.to(modalContentRef.current, { scale: 0.8, opacity: 0, duration: 0.3, ease: "power2.in" })
+      .to(modalRef.current, { opacity: 0, duration: 0.2 }, "-=0.1");
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      gsap.fromTo(modalRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+      gsap.fromTo(modalContentRef.current,
+        { scale: 0.5, opacity: 0, y: 50 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }
+      );
+    }
+
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) closeModal();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isModalOpen]);
+
   return (
     <section id="hero" className="hero-section">
       <div className="container">
@@ -35,8 +74,8 @@ const Hero = () => {
             <div className="photo-circle-wrapper">
               <div
                 className={`photo-circle ${isSpeaking ? 'speaking-active' : ''}`}
-                onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
-                onMouseEnter={() => !isSpeaking && speak("I am Krishna Patil Rajput. Click to hear my introduction.")}
+                onClick={openModal}
+                onMouseEnter={() => !isSpeaking && speak("I am Krishna Patil Rajput. Click to view my profile.")}
               >
                 <img src={profileLogo} alt="Krishna Patil Rajput" />
                 {isSpeaking && (
@@ -71,15 +110,25 @@ const Hero = () => {
             <div className="quick-links-container">
               <div className="hero-badge" onMouseEnter={() => speak("2026 Developer Showcase")}>✨ 2026 Developer Showcase</div>
               <div className="hero-mini-socials">
-                <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
+                <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">
+                  <img src={githubLogo} alt="GitHub" className="mini-logo" />
+                </a>
                 <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
                 <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer" title="Linktree">
-                  <img src={linktreeLogo} alt="Linktree" style={{ width: '20px', height: '20px', verticalAlign: 'middle', borderRadius: '4px' }} />
+                  <img src={linktreeLogo} alt="Linktree" className="mini-logo" />
                 </a>
-                <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer" title="Microsoft">Ⓜ️</a>
-                <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer" title="Kaggle">📊</a>
-                <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer" title="Credly">🏅</a>
-                <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer" title="Hack2Skills">🏆</a>
+                <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer" title="Microsoft">
+                  <img src={microsoftLogo} alt="Microsoft" className="mini-logo" />
+                </a>
+                <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer" title="Kaggle">
+                  <img src={kaggleLogo} alt="Kaggle" className="mini-logo" />
+                </a>
+                <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer" title="Credly">
+                  <img src={credlyLogo} alt="Credly" className="mini-logo" />
+                </a>
+                <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer" title="Hack2Skills">
+                  <img src={hack2skillLogo} alt="Hack2Skills" className="mini-logo" />
+                </a>
               </div>
             </div>
             <h1
@@ -146,6 +195,31 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Cinematic Logo Modal */}
+      {isModalOpen && (
+        <div className="cinematic-modal-overlay" ref={modalRef} onClick={closeModal}>
+          <div className="modal-close-hint">ESC to close or click anywhere</div>
+          <div
+            className="cinematic-modal-content"
+            ref={modalContentRef}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-image-container">
+              <img src={originalPhoto} alt="Krishna Patil Rajput Original" className="original-photo" />
+              <div className="modal-info-overlay">
+                <span className="bounty-badge">BOUNTY: ELITE DEVELOPER</span>
+                <h2>Krishna Patil Rajput</h2>
+                <p>3rd Year IT Student | Full-Stack Expert</p>
+                <div className="modal-tags">
+                  <span>#MERN</span> <span>#AI</span> <span>#Robotics</span> <span>#Nashik</span>
+                </div>
+              </div>
+            </div>
+            <button className="modal-close-btn" onClick={closeModal}>✕</button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
