@@ -54,6 +54,7 @@ An immersive, high-performance portfolio built with **React**, **Vite**, and **G
 
 - **LinkedIn**: [Krishna Patil Rajput](https://www.linkedin.com/in/krishna-patil-rajput/)
 - **GitHub**: [Krishna67890](https://github.com/Krishna67890)
+- **Linktree**: [KRISHNACODERS](https://linktr.ee/KRISHNACODERS)
 - **Microsoft Learn**: [Krishna Patil Rajput](https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/)
 - **Kaggle**: [krishnapatilrajput](https://www.kaggle.com/krishnapatilrajput)
 - **Credly**: [Krishna Patil Rajput](https://www.credly.com/users/krishna-patil-rajput/)

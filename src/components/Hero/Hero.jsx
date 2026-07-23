@@ -1,6 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import linktreeLogo from '../../assets/Links/Linktree.png';
+import profileLogo from '../../assets/Krishna logo.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
@@ -34,7 +35,7 @@ const Hero = () => {
             <div className="photo-circle-wrapper">
               <div
                 className={`photo-circle ${isSpeaking ? 'speaking-active' : ''}`}
-                  onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
+                onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
                 onMouseEnter={() => !isSpeaking && speak("I am Krishna Patil Rajput. Click to hear my introduction.")}
               >
                 <img src={profileLogo} alt="Krishna Patil Rajput" />
@@ -83,7 +84,7 @@ const Hero = () => {
             </div>
             <h1
               className="hero-title"
-                onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
+              onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
               onMouseEnter={() => speak("Krishna Patil Rajput")}
             >
               Hi, I'm <span className="highlight-rgb">Krishna Patil Rajput</span> 👨‍💻
