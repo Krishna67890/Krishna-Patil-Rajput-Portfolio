@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import linktreeLogo from '../../assets/links/Linktree.png';
+import linktreeLogo from '../../assets/Links/Linktree.png';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
