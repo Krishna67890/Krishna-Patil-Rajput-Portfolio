@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import HamburgerMenu from './HamburgerMenu';
-import SpotifyPopup from './SpotifyPopup';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Header.css';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import profileLogo from '../../assets/Krishna logo.jpg';
 
-const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
+const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify }) => {
   const { speak } = usePortfolioVoice();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const [isSpotifyOpen, setIsSpotifyOpen] = useState(false);
 
   useEffect(() => {
     const theme = localStorage.getItem('theme');
@@ -70,7 +68,7 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
           <div className="spotify-control-container">
             <button
               className="spotify-trigger-btn"
-              onClick={() => setIsSpotifyOpen(true)}
+              onClick={onOpenSpotify}
               onMouseEnter={() => speak("Open my coding playlist.")}
             >
               <div className="spotify-pulse"></div>

@@ -3,158 +3,191 @@ import './EmberBackground.css';
 
 const EmberBackground = () => {
   const canvasRef = useRef(null);
-  const mouse = useRef({ x: null, y: null, radius: 150, isPressed: false });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d', { alpha: true });
+    const ctx = canvas.getContext('2d');
     let animationFrameId;
-    let particles = [];
 
-    const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 100 : 300;
+    const gridSize = 20;
+    const gap = 4;
+    let cols, rows;
+    let grid = [];
+    let snakes = [];
 
-    class Particle {
+    const getThemeColors = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+      if (isDark) {
+        return {
+          empty: '#161b22',
+          levels: ['#0e4429', '#006d32', '#26a641', '#39d353'],
+          snake: '#ffffff'
+        };
+      } else {
+        return {
+          empty: '#ebedf0',
+          levels: ['#9be9a8', '#40c463', '#30a14e', '#216e39'],
+          snake: '#000000'
+        };
+      }
+    };
+
+    class Snake {
       constructor() {
         this.reset();
       }
 
       reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        // Tiny dots as requested
-        this.size = Math.random() * 1.2 + 0.3;
-        // Initial velocity
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.opacity = Math.random() * 0.4 + 0.1;
-
-        const colors = [
-          { r: 59, g: 130, b: 246 },   // Blue
-          { r: 6, g: 182, b: 212 },    // Cyan
-          { r: 168, g: 85, b: 247 },   // Purple
-          { r: 255, g: 255, b: 255 },  // White subtle
-        ];
-        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.x = Math.floor(Math.random() * cols);
+        this.y = Math.floor(Math.random() * rows);
+        this.tail = [];
+        this.length = 5;
+        this.dir = { x: 1, y: 0 };
+        this.speed = 5; // Frames per move
+        this.frameCounter = 0;
+        this.target = null;
       }
 
       update() {
-        // Add a bit of "wandering" randomness
-        this.vx += (Math.random() - 0.5) * 0.02;
-        this.vy += (Math.random() - 0.5) * 0.02;
+        this.frameCounter++;
+        if (this.frameCounter < this.speed) return;
+        this.frameCounter = 0;
 
-        if (mouse.current.x != null) {
-          let dx = mouse.current.x - this.x;
-          let dy = mouse.current.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < mouse.current.radius) {
-            const force = (mouse.current.radius - distance) / mouse.current.radius;
-            if (mouse.current.isPressed) {
-              this.vx += (dx / distance) * force * 0.4;
-              this.vy += (dy / distance) * force * 0.4;
-            } else {
-              this.vx -= (dx / distance) * force * 0.2;
-              this.vy -= (dy / distance) * force * 0.2;
+        // Find a target if we don't have one
+        if (!this.target || grid[this.target.y][this.target.x].level === 0) {
+          let candidates = [];
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              if (grid[r][c].level > 0) {
+                candidates.push({ x: c, y: r });
+              }
             }
+          }
+          if (candidates.length > 0) {
+            this.target = candidates[Math.floor(Math.random() * candidates.length)];
+          } else {
+            this.target = null;
           }
         }
 
-        this.x += this.vx;
-        this.y += this.vy;
+        // Move towards target
+        if (this.target) {
+          const dx = this.target.x - this.x;
+          const dy = this.target.y - this.y;
 
-        // Speed limit for smoothness
-        const maxSpeed = 1.5;
-        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-        if (speed > maxSpeed) {
-            this.vx = (this.vx / speed) * maxSpeed;
-            this.vy = (this.vy / speed) * maxSpeed;
+          if (Math.abs(dx) > Math.abs(dy)) {
+            this.dir = { x: dx > 0 ? 1 : -1, y: 0 };
+          } else if (dy !== 0) {
+            this.dir = { x: 0, y: dy > 0 ? 1 : -1 };
+          }
+        } else {
+          // Random walk
+          if (Math.random() < 0.2) {
+            const dirs = [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: 1 }, { x: 0, y: -1 }];
+            this.dir = dirs[Math.floor(Math.random() * dirs.length)];
+          }
         }
 
-        // Wrap around screen instead of bouncing for "moving here and there" feel
-        if (this.x < -10) this.x = canvas.width + 10;
-        if (this.x > canvas.width + 10) this.x = -10;
-        if (this.y < -10) this.y = canvas.height + 10;
-        if (this.y > canvas.height + 10) this.y = -10;
+        this.tail.push({ x: this.x, y: this.y });
+        if (this.tail.length > this.length) this.tail.shift();
+
+        this.x += this.dir.x;
+        this.y += this.dir.y;
+
+        // Wrap around
+        if (this.x >= cols) this.x = 0;
+        if (this.x < 0) this.x = cols - 1;
+        if (this.y >= rows) this.y = 0;
+        if (this.y < 0) this.y = rows - 1;
+
+        // Eat contribution
+        if (grid[this.y][this.x].level > 0) {
+          grid[this.y][this.x].level = 0;
+        }
       }
 
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.opacity})`;
-        ctx.fill();
+      draw(colors) {
+        ctx.fillStyle = colors.snake;
+        this.tail.forEach(seg => {
+          ctx.fillRect(
+            seg.x * (gridSize + gap),
+            seg.y * (gridSize + gap),
+            gridSize,
+            gridSize
+          );
+        });
+        ctx.fillRect(
+          this.x * (gridSize + gap),
+          this.y * (gridSize + gap),
+          gridSize,
+          gridSize
+        );
       }
     }
 
-    const initParticles = () => {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-    };
-
-    const resize = () => {
+    const init = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      initParticles();
-    };
+      cols = Math.ceil(canvas.width / (gridSize + gap));
+      rows = Math.ceil(canvas.height / (gridSize + gap));
 
-    const handleMouseMove = (e) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
-    };
-
-    const handleMouseDown = () => { mouse.current.isPressed = true; };
-    const handleMouseUp = () => { mouse.current.isPressed = false; };
-
-    const connect = () => {
-      const maxDistance = isMobile ? 50 : 85;
-      for (let a = 0; a < particles.length; a++) {
-        for (let b = a + 1; b < particles.length; b++) {
-          let dx = particles[a].x - particles[b].x;
-          let dy = particles[a].y - particles[b].y;
-          let distanceSq = dx * dx + dy * dy;
-
-          if (distanceSq < maxDistance * maxDistance) {
-            let distance = Math.sqrt(distanceSq);
-            let opacity = 1 - (distance / maxDistance);
-            ctx.strokeStyle = `rgba(140, 180, 255, ${opacity * 0.12})`;
-            ctx.lineWidth = 0.4;
-            ctx.beginPath();
-            ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y);
-            ctx.stroke();
-          }
+      grid = [];
+      for (let r = 0; r < rows; r++) {
+        let row = [];
+        for (let c = 0; c < cols; c++) {
+          row.push({
+            level: Math.random() < 0.1 ? Math.floor(Math.random() * 4) + 1 : 0
+          });
         }
+        grid.push(row);
       }
+
+      snakes = [new Snake(), new Snake(), new Snake()];
     };
 
     const animate = () => {
+      const colors = getThemeColors();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+      // Draw Grid
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = grid[r][c];
+          ctx.fillStyle = cell.level === 0 ? colors.empty : colors.levels[cell.level - 1];
+          ctx.fillRect(
+            c * (gridSize + gap),
+            r * (gridSize + gap),
+            gridSize,
+            gridSize
+          );
+
+          // Randomly regenerate contributions
+          if (cell.level === 0 && Math.random() < 0.0001) {
+            cell.level = Math.floor(Math.random() * 4) + 1;
+          }
+        }
       }
 
-      connect();
+      // Update and Draw Snakes
+      snakes.forEach(snake => {
+        snake.update();
+        snake.draw(colors);
+      });
+
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
+    const handleResize = () => {
+      init();
+    };
 
-    resize();
+    window.addEventListener('resize', handleResize);
+    init();
     animate();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -171,7 +204,7 @@ const EmberBackground = () => {
         height: '100%',
         zIndex: -1,
         pointerEvents: 'none',
-        background: 'transparent'
+        opacity: 0.4
       }}
     />
   );

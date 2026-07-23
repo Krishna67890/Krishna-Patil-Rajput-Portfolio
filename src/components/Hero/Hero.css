@@ -234,19 +234,43 @@
 
 .hero-links-row {
   margin-top: 15px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
 .hero-links-row a {
   color: var(--primary-color);
   text-decoration: none;
-  margin: 0 5px;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.3s;
 }
 
 .hero-links-row a:hover {
-  text-decoration: underline;
+  background: rgba(59, 130, 246, 0.1);
+  text-decoration: none;
+}
+
+.link-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  object-fit: contain;
 }
 
 .hero-badge {

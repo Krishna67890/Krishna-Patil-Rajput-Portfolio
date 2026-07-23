@@ -20,6 +20,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Journey from './components/Journey/Journey';
 import GameMode from './components/Game/GameMode';
 import Terminal from './components/Terminal/Terminal';
+import SpotifyPopup from './components/Header/SpotifyPopup';
 import useGsapAnimations from "./Hooks/useGsapAnimations";
 import './App.css';
 
@@ -28,6 +29,7 @@ function App() {
   const [isJourneyOpen, setIsJourneyOpen] = useState(false);
   const [isGameOpen, setIsGameOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [isSpotifyOpen, setIsSpotifyOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -70,11 +72,13 @@ function App() {
       <Terminal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
       <Journey isOpen={isJourneyOpen} onClose={() => setIsJourneyOpen(false)} />
       <GameMode isOpen={isGameOpen} onClose={() => setIsGameOpen(false)} />
+      <SpotifyPopup isOpen={isSpotifyOpen} onClose={() => setIsSpotifyOpen(false)} />
 
       <Header
         onOpenJourney={() => setIsJourneyOpen(true)}
         onOpenGame={() => setIsGameOpen(true)}
         onOpenTerminal={() => setIsTerminalOpen(true)}
+        onOpenSpotify={() => setIsSpotifyOpen(true)}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />

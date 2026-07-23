@@ -7,6 +7,7 @@ import microsoftLogo from '../../assets/Links/Microsoft logo.png';
 import kaggleLogo from '../../assets/Links/Kaggle logo .png';
 import credlyLogo from '../../assets/Links/credly logo.png';
 import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
+import resumeLogo from '../../assets/Links/resume logo.jpg';
 import linkedinLogo from '../../assets/Linked in 1.png';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import originalPhoto from '../../assets/Krishna-Original.jpg';
@@ -160,27 +161,38 @@ const Hero = () => {
             </div>
             <h1
               className="hero-title"
-              onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
+              onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in Full-stack and App development from Nashik.")}
               onMouseEnter={() => speak("Krishna Patil Rajput")}
             >
               Hi, I'm <span className="highlight-rgb">Krishna Patil Rajput</span> 👨‍💻
             </h1>
-            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 3rd Year IT Student at Matoshri College of Engineering. I'm a Full-Stack, Android, and Game Developer.")}>
+            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 3rd Year IT Student at Matoshri College of Engineering. I'm a Full-stack and App Developer.")}>
               I'm a passionate 3rd Year IT Student at <strong>Matoshri College of Engineering</strong>.
-              I'm a <strong>Full-Stack, Android, and Game Developer</strong>.
+              I'm a <strong>Full-stack and App Developer</strong>.
             </p>
-            <p className="hero-description" onMouseEnter={() => speak("Nashik, India. Exploring AI, Robotics, and the future of web interactive experiences.")}>
-              📍 <strong>Nashik, India</strong>. Exploring AI, Robotics, and the future of web interactive experiences.
+            <p className="hero-description" onMouseEnter={() => speak("Nashik, India. Exploring AI, App Development, and the future of web interactive experiences.")}>
+              📍 <strong>Nashik, India</strong>. Exploring AI, App Development, and the future of web interactive experiences.
             </p>
 
             <div className="hero-links-row">
-              <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer">GitHub</a> •
-              <a href={resumePdf} download="Krishna_Patil_Resume.pdf" onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}>Download CV</a> •
-              <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer">Linktree</a> •
-              <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">Microsoft</a> •
-              <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">Kaggle</a> •
-              <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">Credly</a> •
-              <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">🏆 Hack2Skills</a>
+              <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer">
+                <img src={githubLogo} alt="GitHub" className="link-icon" /> GitHub
+              </a> •
+              <a href={resumePdf} download="Krishna_Patil_Resume.pdf" onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}>
+                <img src={resumeLogo} alt="Resume" className="link-icon" /> Resume
+              </a> •
+              <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">
+                <img src={microsoftLogo} alt="Microsoft" className="link-icon" /> Microsoft
+              </a> •
+              <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">
+                <img src={kaggleLogo} alt="Kaggle" className="link-icon" /> Kaggle
+              </a> •
+              <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">
+                <img src={credlyLogo} alt="Credly" className="link-icon" /> Credly
+              </a> •
+              <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">
+                <img src={hack2skillLogo} alt="Hack2Skills" className="link-icon" /> Hack2Skills
+              </a>
             </div>
 
             <div className="hero-buttons">
@@ -198,7 +210,7 @@ const Hero = () => {
                 className="btn btn-secondary"
                 onMouseEnter={() => speakAction("Opening my open-source repositories where you can review my clean code and architecture.")}
               >
-                GitHub
+                <img src={githubLogo} alt="GitHub" className="btn-icon" /> GitHub
               </a>
               <a
                 href={cvLink}
@@ -207,7 +219,7 @@ const Hero = () => {
                 className="btn btn-download-cv"
                 onMouseEnter={() => speakAction("Opening my professional online resume for your review.")}
               >
-                View Resume
+                <img src={resumeLogo} alt="Resume" className="btn-icon" /> View Resume
               </a>
               <a
                 href={resumePdf}
@@ -216,7 +228,7 @@ const Hero = () => {
                 onMouseEnter={() => !isSpeaking && speak("Click to download my resume.")}
                 onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}
               >
-                Download CV 📄
+                <img src={resumeLogo} alt="Resume" className="btn-icon" /> Download CV
               </a>
             </div>
           </div>
@@ -281,7 +293,7 @@ const Hero = () => {
                 </div>
                 <div className="stat-box">
                   <span className="stat-label">SPECIALTY</span>
-                  <span className="stat-value">MERN & ROBOTICS</span>
+                  <span className="stat-value">Full stack & App Dev</span>
                 </div>
                 <div className="stat-box">
                   <span className="stat-label">THREAT LEVEL</span>

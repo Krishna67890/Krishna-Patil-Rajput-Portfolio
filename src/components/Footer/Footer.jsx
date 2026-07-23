@@ -19,9 +19,9 @@ const Footer = () => {
                 <div className="logo-subtitle">Full-Stack & Game Developer</div>
               </div>
             </div>
-            <p className="footer-description" onMouseEnter={() => speak("I build innovative solutions with modern technologies and creative problem-solving approaches, specializing in MERN stack and AI-powered applications.")}>
+            <p className="footer-description" onMouseEnter={() => speak("I build innovative solutions with modern technologies and creative problem-solving approaches, specializing in Full-stack and App development.")}>
               Building innovative solutions with modern technologies and creative problem-solving approaches.
-              Specializing in MERN stack and AI-powered applications.
+              Specializing in Full-stack and App development.
             </p>
             <div className="footer-contact">
               <div className="contact-item" onMouseEnter={() => speak("Send me an email at Krishna dot coders 12 at gmail dot com.")}>
