@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import profileLogo from '../../assets/Krishna logo.jpg';
+import linktreeLogo from '../../assets/links/Linktree.png';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
@@ -72,6 +72,9 @@ const Hero = () => {
               <div className="hero-mini-socials">
                 <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
                 <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
+                <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer" title="Linktree">
+                  <img src={linktreeLogo} alt="Linktree" style={{ width: '20px', height: '20px', verticalAlign: 'middle', borderRadius: '4px' }} />
+                </a>
                 <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer" title="Microsoft">Ⓜ️</a>
                 <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer" title="Kaggle">📊</a>
                 <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer" title="Credly">🏅</a>
@@ -95,7 +98,8 @@ const Hero = () => {
 
             <div className="hero-links-row">
               <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer">GitHub</a> •
-              <a href={resumePdf} download="Krishna_Patil_Resume.pdf">Download CV</a> •
+              <a href={resumePdf} download="Krishna_Patil_Resume.pdf" onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}>Download CV</a> •
+              <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer">Linktree</a> •
               <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">Microsoft</a> •
               <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">Kaggle</a> •
               <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">Credly</a> •
@@ -132,7 +136,8 @@ const Hero = () => {
                 href={resumePdf}
                 download="Krishna_Patil_Resume.pdf"
                 className="btn btn-resume"
-                onMouseEnter={() => speakAction("Downloading my professional curriculum vitae, optimized for technical recruiters.")}
+                onMouseEnter={() => !isSpeaking && speak("Click to download my resume.")}
+                onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}
               >
                 Download CV 📄
               </a>

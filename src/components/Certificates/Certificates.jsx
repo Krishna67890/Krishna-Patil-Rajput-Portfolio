@@ -50,34 +50,6 @@ const certificatesData = [
     narration: "Innovate 4 FinLit Winner Certificate. Awarded by Hack 2 Skill for excellence in developing financial literacy gaming solutions."
   },
   {
-    title: "Computer Engineering Course",
-    issuer: "Bhujbal Knowledge City",
-    image: computerEngCert,
-    description: "Comprehensive certification in Computer Engineering principles and practices.",
-    narration: "Computer Engineering Course Certificate. Representing foundational and advanced knowledge in computer engineering."
-  },
-  {
-    title: "SQL Certification",
-    issuer: "Database Management",
-    image: sqlCert,
-    description: "Expertise in SQL for database design, querying, and management.",
-    narration: "SQL Certification. Expertise in Structured Query Language for database design and management."
-  },
-  {
-    title: "Linux for Beginners",
-    issuer: "Open Source Academy",
-    image: linuxCert,
-    description: "Foundational knowledge of Linux operating system and command line interface.",
-    narration: "Linux for Beginners Certificate. Foundational knowledge of Linux operating system and command line interface."
-  },
-  {
-    title: "Backend Development",
-    issuer: "Full Stack Mastery",
-    image: backendCert,
-    description: "Mastery of server-side technologies, APIs, and database integration.",
-    narration: "Backend Development Certificate. Mastery of server-side technologies and API development."
-  },
-  {
     title: "Copado AI Certified",
     issuer: "Copado",
     image: copadoCert,

@@ -9,8 +9,10 @@ import cppImg from '../../assets/Certificates/Cpp-and-Oop-Concepts.jpg';
 import backendImg from '../../assets/Backend development course.jpg';
 import codes3Img from '../../assets/All codes part 3.jpg';
 import cyberImg from '../../assets/CyberSecurity Course.jpg';
-import computerImg from '../../assets/Computer Engineering Course.webp';
-import linuxImg from '../../assets/Linux for Bingginners.png';
+import computerEngCert from '../../assets/Computer Engineering Course.webp';
+import sqlCert from '../../assets/SQL Course.png';
+import linuxCert from '../../assets/Linux for Bingginners.png';
+import backendCert from '../../assets/Backend development course.jpg';
 import codes2Img from '../../assets/All codes part 2.jpg';
 import codes1Img from '../../assets/All codes part 1.jpg';
 
@@ -28,8 +30,8 @@ const Courses = ({ searchQuery }) => {
       title: "SQL Course",
       description: "Learn to manage and query databases effectively with this comprehensive SQL guide.",
       tech: "SQL, Database, MySQL",
-      image: sqlImg,
-      screenshots: [sqlImg],
+      image: sqlCert,
+      screenshots: [sqlCert],
       link: "https://krishnablogy.blogspot.com/2025/12/sql-course.html"
     },
     {
@@ -44,8 +46,8 @@ const Courses = ({ searchQuery }) => {
       title: "Backend Course",
       description: "The ultimate guide for beginners to understand server-side development and APIs.",
       tech: "Node.js, Express, Backend",
-      image: backendImg,
-      screenshots: [backendImg],
+      image: backendCert,
+      screenshots: [backendCert],
       link: "https://krishnablogy.blogspot.com/2025/03/ultimate-backend-course-for-beginners.html"
     },
     {
@@ -68,16 +70,16 @@ const Courses = ({ searchQuery }) => {
       title: "Computer Engineering",
       description: "A deep dive into the core concepts and subjects of computer science and engineering.",
       tech: "Computer Science, Engineering",
-      image: computerImg,
-      screenshots: [computerImg],
+      image: computerEngCert,
+      screenshots: [computerEngCert],
       link: "https://krishnablogy.blogspot.com/2023/09/computer-engineering-course.html"
     },
     {
       title: "Linux for Beginners",
       description: "Start your journey with Linux, covering command lines, file systems, and more.",
       tech: "Linux, Terminal, OS",
-      image: linuxImg,
-      screenshots: [linuxImg],
+      image: linuxCert,
+      screenshots: [linuxCert],
       link: "https://krishnablogy.blogspot.com/2024/09/linux-information.html"
     },
     {

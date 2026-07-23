@@ -38,6 +38,7 @@ const Footer = () => {
               <a href="#projects" onMouseEnter={() => speak("View my technical projects.")}>Projects</a>
               <a href="#games" onMouseEnter={() => speak("Explore my interactive games.")}>Games</a>
               <a href="#ai-projects" onMouseEnter={() => speak("Check out my artificial intelligence projects.")}>AI Projects</a>
+              <a href="https://linktr.ee/KRISHNACODERS" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("Visit my Linktree library.")}>Linktree</a>
               <a href="#skills" onMouseEnter={() => speak("View my technical skills and arsenal.")}>Skills</a>
               <a href="#contact" onMouseEnter={() => speak("Get in touch with me.")}>Contact</a>
             </div>
