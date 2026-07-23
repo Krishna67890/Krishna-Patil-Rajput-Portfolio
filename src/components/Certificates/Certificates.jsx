@@ -16,12 +16,6 @@ import internshipCert from '../../assets/Certificates/Full stack dev internship 
 import aiHackCert from '../../assets/Certificates/International Agentic AI Hacathon Sandip University.jpg';
 import copadoCert from '../../assets/Certificates/copodo-certified-capadoai-certificate.jpg';
 
-// Additional Certificates from assets
-import sqlCert from '../../assets/SQL Course.png';
-import linuxCert from '../../assets/Linux for Bingginners.png';
-import backendCert from '../../assets/Backend development course.jpg';
-import computerEngCert from '../../assets/Computer Engineering Course.webp';
-
 // PDF Certificates
 import finlitCert from '../../assets/Certificates/Innovate4FinLit By Hack2skill Game Challenge.pdf';
 import prototypeCert from '../../assets/Certificates/Prototype Submission solution Challenge 2026 - Build with AI.pdf';

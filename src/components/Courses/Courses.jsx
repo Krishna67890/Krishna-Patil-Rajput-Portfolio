@@ -4,9 +4,7 @@ import './Courses.css';
 
 // Importing assets for Courses with precise filenames
 import pythonImg from '../../assets/python Programming.jpg';
-import sqlImg from '../../assets/SQL Course.png';
 import cppImg from '../../assets/Certificates/Cpp-and-Oop-Concepts.jpg';
-import backendImg from '../../assets/Backend development course.jpg';
 import codes3Img from '../../assets/All codes part 3.jpg';
 import cyberImg from '../../assets/CyberSecurity Course.jpg';
 import computerEngCert from '../../assets/Computer Engineering Course.webp';
