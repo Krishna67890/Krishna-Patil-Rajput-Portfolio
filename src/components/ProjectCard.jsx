@@ -91,7 +91,8 @@ const ProjectCard = ({ project }) => {
   const handleMouseEnter = () => {
     if (isModalOpen) return;
     const tech = project.tech ? `Built with ${project.tech}.` : "";
-    speak(`${project.title}. ${project.description} ${tech}`);
+    const description = project.narration || project.description;
+    speak(`${project.title}. ${description} ${tech}`);
   };
 
   const handleMouseMove = (e) => {
@@ -198,8 +199,24 @@ const ProjectCard = ({ project }) => {
               <div className="modal-slider">
                 <button className="modal-nav-btn prev" onClick={prevSlide}>❮</button>
                 <div className="modal-image-container zoom-container">
-                  <img src={images[currentImageIndex]} alt={project.title} className="modal-image zoom-image" />
-                  <div className="magnifier"></div>
+                  {project.video && currentImageIndex === 0 ? (
+                    <div className="video-container">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={project.video}
+                        title={project.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  ) : (
+                    <>
+                      <img src={images[currentImageIndex]} alt={project.title} className="modal-image zoom-image" />
+                      <div className="magnifier"></div>
+                    </>
+                  )}
                 </div>
                 <button className="modal-nav-btn next" onClick={nextSlide}>❯</button>
               </div>

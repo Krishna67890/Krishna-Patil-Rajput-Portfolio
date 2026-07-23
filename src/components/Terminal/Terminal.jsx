@@ -33,7 +33,7 @@ const Terminal = ({ isOpen, onClose }) => {
     whoami: () => [
       'Name: Krishna Patil Rajput',
       'Role: Full-Stack Developer & Game Dev',
-      'Status: 2nd Year IT Student @ Matoshri College',
+      'Status: 3rd Year IT Student @ Matoshri College',
       'Location: Nashik, India',
       'Specialty: MERN, Unity, Godot, AI'
     ],

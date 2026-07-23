@@ -79,7 +79,8 @@ export const usePortfolioVoice = () => {
 
     utterance.onerror = (event) => {
       // These are normal results of stopping speech to start a new one on hover
-      const silentErrors = ['interrupted', 'canceled', 'agent-restarted'];
+      // 'not-allowed' happens when browser blocks autoplay without user interaction
+      const silentErrors = ['interrupted', 'canceled', 'agent-restarted', 'not-allowed'];
 
       if (!silentErrors.includes(event.error)) {
         console.error('SpeechSynthesisUtterance error:', event.error, event);

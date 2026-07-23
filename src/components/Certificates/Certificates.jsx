@@ -26,11 +26,16 @@ import computerEngCert from '../../assets/Computer Engineering Course.webp';
 import finlitCert from '../../assets/Certificates/Innovate4FinLit By Hack2skill Game Challenge.pdf';
 import prototypeCert from '../../assets/Certificates/Prototype Submission solution Challenge 2026 - Build with AI.pdf';
 
+// PNG Previews for PDFs
+import finlitImg from '../../assets/Certificates/Innovate4FinLit-Game-Challenge.png';
+import prototypeImg from '../../assets/Certificates/Solution Challenge 2026 Build with AI.png';
+
 const certificatesData = [
   {
     title: "Google Build with AI Prototype",
     issuer: "Google Solution Challenge 2026",
     file: prototypeCert,
+    image: prototypeImg,
     type: "pdf",
     description: "Official recognition for building an AI prototype for the Google Solution Challenge 2026.",
     narration: "Google Build with AI Prototype Certificate. This recognizes the successful submission of an AI-powered solution for the Google Solution Challenge 2026."
@@ -39,6 +44,7 @@ const certificatesData = [
     title: "Innovate4FinLit Winner",
     issuer: "Hack2skill Game Challenge",
     file: finlitCert,
+    image: finlitImg,
     type: "pdf",
     description: "Awarded for winning the Innovate for Financial Literacy Hackathon Game Challenge.",
     narration: "Innovate 4 FinLit Winner Certificate. Awarded by Hack 2 Skill for excellence in developing financial literacy gaming solutions."
@@ -221,64 +227,36 @@ const Certificates = ({ searchQuery }) => {
       <div className="container">
         <h2 className="section-title">
           <span className="title-emoji">📜</span>
-          <span className="title-text">Official Credentials & PDF Vault</span>
+          <span className="title-text">Official Credentials & Certifications</span>
         </h2>
 
-        {/* PDF SECTION - ADVANCED LOOK */}
-        {pdfCertificates.length > 0 && (
-          <div className="cert-sub-section pdf-exclusive">
-            <h3 className="sub-section-title">🛡️ High-Security Document Vault</h3>
-            <div className="certificates-grid pdf-grid">
-              {pdfCertificates.map((cert, index) => (
-                <div key={index} className="certificate-card pdf-card glass-morphism" onClick={() => openGallery(cert)}>
-                  <div className="certificate-image-container">
-                    <div className="pdf-placeholder">
-                      <div className="pdf-glow"></div>
-                      <span className="pdf-icon">📄</span>
-                      <span className="pdf-label">VERIFIED PDF</span>
-                    </div>
-                    <div className="card-actions">
-                      <button className="action-btn view-btn">🔍 Full Screen</button>
-                      <button className="action-btn download-btn-main" onClick={(e) => handleDownload(e, cert)}>
-                         📥 Download Certificate
-                      </button>
-                    </div>
-                  </div>
-                  <div className="certificate-info">
-                    <span className="issuer">{cert.issuer}</span>
-                    <h3>{cert.title}</h3>
-                    <div className="cert-type-badge pdf">Level: Official Document</div>
-                  </div>
+        <div className="certificates-grid">
+          {filteredCertificates.map((cert, index) => (
+            <div key={index} className="certificate-card glass-morphism" onClick={() => openGallery(cert)}>
+              <div className="certificate-image-container">
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="certificate-img"
+                  style={{
+                    transform: `${cert.initialRotation ? `rotate(${cert.initialRotation}deg)` : ''} ${cert.initialScale ? `scale(${cert.initialScale})` : ''}`.trim() || 'none'
+                  }}
+                />
+                <div className="card-actions">
+                  <button className="action-btn view-btn">🔍 View</button>
+                  <button className="action-btn download-btn" onClick={(e) => handleDownload(e, cert)}>📥 Save</button>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* IMAGE GALLERY SECTION */}
-        {galleryCertificates.length > 0 && (
-          <div className="cert-sub-section">
-            <h3 className="sub-section-title">🌐 Digital E-Certificates</h3>
-            <div className="certificates-grid">
-              {galleryCertificates.map((cert, index) => (
-                <div key={index} className="certificate-card glass-morphism" onClick={() => openGallery(cert)}>
-                  <div className="certificate-image-container">
-                    <img src={cert.image} alt={cert.title} className="certificate-img" style={{ transform: `${cert.initialRotation ? `rotate(${cert.initialRotation}deg)` : ''} ${cert.initialScale ? `scale(${cert.initialScale})` : ''}`.trim() || 'none' }} />
-                    <div className="card-actions">
-                      <button className="action-btn view-btn">🔍 View</button>
-                      <button className="action-btn download-btn" onClick={(e) => handleDownload(e, cert)}>📥 Save</button>
-                    </div>
-                  </div>
-                  <div className="certificate-info">
-                    <span className="issuer">{cert.issuer}</span>
-                    <h3>{cert.title}</h3>
-                    <div className="cert-type-badge">Certified Professional</div>
-                  </div>
+              </div>
+              <div className="certificate-info">
+                <span className="issuer">{cert.issuer}</span>
+                <h3>{cert.title}</h3>
+                <div className={`cert-type-badge ${cert.type === 'pdf' ? 'pdf' : ''}`}>
+                  {cert.type === 'pdf' ? 'Official Document' : 'Certified Professional'}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
 
       {/* GALLERY MODAL */}

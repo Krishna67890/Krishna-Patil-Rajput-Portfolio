@@ -34,7 +34,7 @@ const Hero = () => {
             <div className="photo-circle-wrapper">
               <div
                 className={`photo-circle ${isSpeaking ? 'speaking-active' : ''}`}
-                onClick={() => speak("I am Krishna Patil Rajput, a 2nd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
+                  onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
                 onMouseEnter={() => !isSpeaking && speak("I am Krishna Patil Rajput. Click to hear my introduction.")}
               >
                 <img src={profileLogo} alt="Krishna Patil Rajput" />
@@ -80,13 +80,13 @@ const Hero = () => {
             </div>
             <h1
               className="hero-title"
-              onClick={() => speak("I am Krishna Patil Rajput, a 2nd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
+                onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
               onMouseEnter={() => speak("Krishna Patil Rajput")}
             >
               Hi, I'm <span className="highlight-rgb">Krishna Patil Rajput</span> 👨‍💻
             </h1>
-            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 2nd Year IT Student at Matoshri College of Engineering. I'm a Full-Stack, Android, and Game Developer.")}>
-              I'm a passionate 2nd Year IT Student at <strong>Matoshri College of Engineering</strong>.
+            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 3rd Year IT Student at Matoshri College of Engineering. I'm a Full-Stack, Android, and Game Developer.")}>
+              I'm a passionate 3rd Year IT Student at <strong>Matoshri College of Engineering</strong>.
               I'm a <strong>Full-Stack, Android, and Game Developer</strong>.
             </p>
             <p className="hero-description" onMouseEnter={() => speak("Nashik, India. Exploring AI, Robotics, and the future of web interactive experiences.")}>

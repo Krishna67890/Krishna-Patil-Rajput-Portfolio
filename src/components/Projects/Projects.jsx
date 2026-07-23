@@ -138,8 +138,64 @@ import mulani3 from '../../assets/Mulani Electricians 3.png';
 import mulani4 from '../../assets/Mulani Electricians 4.png';
 import mulani5 from '../../assets/Mulani Electricians 5.png';
 
+import fitness1 from '../../assets/Fitness Temple 1.png';
+import fitness2 from '../../assets/Fitness Temple 2.png';
+import fitness3 from '../../assets/Fitness Temple 3.png';
+import fitness4 from '../../assets/Fitness Temple 4.png';
+import fitness5 from '../../assets/Fitness Temple 5.png';
+
+import civic1 from '../../assets/CivicMindAI 1.png';
+import civic2 from '../../assets/CivicMindAI 2.png';
+import civic3 from '../../assets/CivicMindAI 3.png';
+import civic4 from '../../assets/CivicMindAI 4.png';
+import civic5 from '../../assets/CivicMindAI 5.png';
+
+import arena1 from '../../assets/ArenaMindAI 1.png';
+import arena2 from '../../assets/ArenaMindAI 2.png';
+import arena3 from '../../assets/ArenaMindAI 3.png';
+import arena4 from '../../assets/ArenaMindAI 4.png';
+import arena5 from '../../assets/ArenaMindAI 5.png';
+
+import urban1 from '../../assets/UrbanMindAI 1.png';
+import urban2 from '../../assets/UrbanMindAI 2.png';
+
 const Projects = ({ searchQuery, setSearchQuery }) => {
   const advancedProjects = [
+    {
+      title: "Smart Community AI",
+      description: "An AI-powered Decision Intelligence Platform that leverages data and automation to help city stakeholders make better decisions for community well-being. Built for the Gen AI Academy APAC Edition Hackathon.",
+      tech: "Gen AI, Cloud Solutions, Decision Intelligence",
+      image: civic1,
+      screenshots: [civic1, civic2, civic3, civic4, civic5],
+      link: "https://krishnablogy.blogspot.com/2026/07/smart-community-ai.html",
+      narration: "Problem Statement: Build an AI-powered Decision Intelligence Platform that leverages data, AI models, and intelligent automation to help individuals, communities, organizations, and city stakeholders analyze information, generate insights, predict outcomes, and make better decisions that improve everyday life and community well-being. The Siloed Multimodal Challenge: Urban data isn't just numbers; it's unorganized PDFs, chaotic audio, dashcam footage, and sensor streams. Traditional platforms cannot cross-analyze these formats simultaneously. The Insight-to-Action Gap: Most dashboards only visualize data but fail to automatically orchestrate or execute cross-department workflows to resolve the identified issues. The Algorithmic Trust Deficit: Stakeholders hesitate to trust AI black boxes. We provide transparency and justification for critical civic resource allocations. The Visionaries Meet Neural Networks: We are a team of AI innovators building intelligent, cloud-powered solutions for the Gen AI Academy APAC Edition Hackathon."
+    },
+    {
+      title: "ArenaMindAI - FIFA World Cup 2026",
+      description: "A Virtual PromptWars Challenge entry for the FIFA World Cup 2026, creating an intelligent arena experience.",
+      tech: "Prompt Engineering, AI, Hack2Skill",
+      image: arena1,
+      screenshots: [arena1, arena2, arena3, arena4, arena5],
+      video: "https://www.youtube.com/embed/HRLPRi5-Se4",
+      link: "https://krishnablogy.blogspot.com/2026/07/virtual-promptwars-challenge-4-fifa.html"
+    },
+    {
+      title: "UrbanMind AI | Kaggle AI Capstone Project",
+      description: "A comprehensive AI capstone project focused on urban intelligence and data analysis.",
+      tech: "AI, Data Science, Kaggle, React",
+      image: urban1,
+      screenshots: [urban1, urban2],
+      video: "https://www.youtube.com/embed/zlT6qAyaO9Y",
+      link: "https://krishnablogy.blogspot.com/2026/07/urbanmind-ai-kaggle-ai-capstone-project.html"
+    },
+    {
+      title: "Fitness Temple Gym",
+      description: "A modern fitness platform for Fitness Temple Gym, featuring workout programs and gym management features.",
+      tech: "React, UI/UX, Fitness Tech",
+      image: fitness1,
+      screenshots: [fitness1, fitness2, fitness3, fitness4, fitness5],
+      link: "https://krishnablogy.blogspot.com/2026/06/visit-fitness-temple-gym.html"
+    },
     {
       title: "EventPulse AI",
       description: "An AI-powered event management platform developed for Hack2Skills, streamlining event planning and attendee engagement.",
@@ -154,6 +210,7 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
       tech: "AI, Logistics Tech, React, Hack2Skills",
       image: logimind1,
       screenshots: [logimind1, logimind2, logimind3, logimind4, logimind5, logimind6, logimind7],
+      video: "https://www.youtube.com/embed/10QHzc4bNTQ",
       link: "https://krishnablogy.blogspot.com/2026/04/logimind-ai-by-solution-challenge-2026.html"
     },
     {
@@ -173,8 +230,8 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
       link: "https://krishnablogy.blogspot.com/2026/04/democracy-lens-ai-election-mentor.html"
     },
     {
-      title: "Mulani Electricians",
-      description: "A professional service platform for Mulani Electricals, featuring service listings and customer engagement.",
+      title: "Patil Electricals | Website For Sale",
+      description: "This website is for sale as 1000 rupees. In this you can add products, ratings, and all kind of features are available. Visit then purchase this website for sale.",
       tech: "React, UI/UX, Service Management",
       image: mulani1,
       screenshots: [mulani1, mulani2, mulani3, mulani4, mulani5],

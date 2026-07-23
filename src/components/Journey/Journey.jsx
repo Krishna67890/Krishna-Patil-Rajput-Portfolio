@@ -7,7 +7,7 @@ const Journey = ({ isOpen, onClose }) => {
   const [activeVoice, setActiveVoice] = useState(null);
 
   const journeyText = `🎓 My Journey & Background 📚
-Education: 2nd Year IT Student at Matoshri College of Engineering and Research Centre. Focusing on Information Technology fundamentals and advanced software engineering principles. 💻
+Education: 3rd Year IT Student at Matoshri College of Engineering and Research Centre. Focusing on Information Technology fundamentals and advanced software engineering principles. 💻
 Hands-on Experience: Development Expertise. Extensive experience in MERN Stack, Game Development, and Mobile App Development. Built 15+ advanced web projects, clones, and interactive platforms using modern technologies. 🔧
 Systems & Virtualization: OS & Environment Management. Skilled in configuring Dual Boot with Windows and Ubuntu, and VirtualBox. Actively managing various Linux distros like Manjaro and Linux Mint for testing performance and stability. ☁️
 Future Goals: DevOps & Cloud. Aiming to master DevOps practices, Cloud computing (AWS or Azure), and system automation. To become a versatile developer who understands the full lifecycle of software—from code to cloud deployment. 🌐
@@ -63,12 +63,12 @@ Current Learning: Expanding Horizons. Deepening expertise in Game Development, A
 
         <div className="journey-content">
           <div className="journey-grid">
-            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Education: 2nd Year IT Student at Matoshri College. Focusing on IT fundamentals.")}>
+            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Education: 3rd Year IT Student at Matoshri College. Focusing on IT fundamentals.")}>
               <div className="card-header">
                 <span className="card-icon">📚</span>
                 <h3>Education</h3>
               </div>
-              <p><strong>2nd Year IT Student</strong></p>
+              <p><strong>3rd Year IT Student</strong></p>
               <p>Matoshri College of Engineering and Research Centre</p>
               <p className="card-detail">Focusing on Information Technology fundamentals and advanced software engineering principles. 💻</p>
             </section>

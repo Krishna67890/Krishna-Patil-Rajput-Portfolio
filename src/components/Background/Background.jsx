@@ -10,7 +10,7 @@ const Background = () => {
           <div className="background-card rgb-card">
             <div className="card-icon">📚</div>
             <h3>Education</h3>
-            <p><strong>2nd Year IT Student</strong></p>
+            <p><strong>3rd Year IT Student</strong></p>
             <p>Matoshri College of Engineering and Research Centre</p>
             <p className="card-detail">Focusing on Information Technology fundamentals and advanced software engineering principles.</p>
           </div>

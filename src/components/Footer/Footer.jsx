@@ -45,9 +45,9 @@ const Footer = () => {
           
           <div className="footer-section">
             <h3 onMouseEnter={() => speak("My educational background.")}>Education</h3>
-            <div className="footer-edu" onMouseEnter={() => speak("I am a second-year Information Technology student at Matoshri College of Engineering and Research Centre.")}>
+            <div className="footer-edu" onMouseEnter={() => speak("I am a third-year Information Technology student at Matoshri College of Engineering and Research Centre.")}>
               <p><strong>Matoshri College of Engineering and Research Centre</strong></p>
-              <p>SY - Information Technology</p>
+              <p>TY - Information Technology</p>
             </div>
           </div>
         </div>
