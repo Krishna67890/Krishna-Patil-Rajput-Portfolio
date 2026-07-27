@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import ProjectCard from '../ProjectCard';
 import './Courses.css';

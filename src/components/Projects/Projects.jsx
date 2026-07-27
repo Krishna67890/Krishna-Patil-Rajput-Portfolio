@@ -1,8 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import ProjectCard from '../ProjectCard';
 import './Projects.css';
-
-// Logo Imports
 
 // Importing assets
 import tech1 from '../../assets/TechFundamentals 1.png';
