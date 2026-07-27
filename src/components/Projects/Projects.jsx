@@ -1,15 +1,8 @@
 import React from 'react';
 import ProjectCard from '../ProjectCard';
 import './Projects.css';
-import resumePdf from '../../assets/Krishna Patil resume.pdf';
 
 // Logo Imports
-import githubLogo from '../../assets/Links/Github logo.jpg';
-import microsoftLogo from '../../assets/Links/Microsoft logo.png';
-import kaggleLogo from '../../assets/Links/Kaggle logo .png';
-import credlyLogo from '../../assets/Links/credly logo.png';
-import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
-import resumeLogo from '../../assets/Links/resume logo.jpg';
 
 // Importing assets
 import tech1 from '../../assets/TechFundamentals 1.png';
