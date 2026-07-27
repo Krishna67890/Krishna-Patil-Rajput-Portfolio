@@ -167,6 +167,12 @@ import arena5 from '../../assets/ArenaMindAI 5.png';
 import urban1 from '../../assets/UrbanMindAI 1.png';
 import urban2 from '../../assets/UrbanMindAI 2.png';
 
+import blockcraft1 from '../../assets/Blockcraft 1.png';
+import blockcraft2 from '../../assets/Blockcraft 2.png';
+import blockcraft3 from '../../assets/Blockcraft 3.png';
+import blockcraft4 from '../../assets/Blockcraft 4.png';
+
+
 const Projects = ({ searchQuery, setSearchQuery }) => {
   const advancedProjects = [
     {
@@ -186,6 +192,15 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
       screenshots: [arena1, arena2, arena3, arena4, arena5],
       video: "https://www.youtube.com/embed/HRLPRi5-Se4",
       link: "https://krishnablogy.blogspot.com/2026/07/virtual-promptwars-challenge-4-fifa.html"
+    },
+    {
+      title: "Blockcraft Builder - Krishna Patil Rajput Products",
+      description: "Experience the ultimate Blockcraft Builder Dream House Edition. High-quality 3D assets and building system for creative minds. Buy now on Gumroad.",
+      tech: "Unity 3D, C#, Game Assets",
+      image: blockcraft1,
+      screenshots: [blockcraft1, blockcraft2, blockcraft3, blockcraft4],
+      video: "https://www.youtube.com/embed/fT-YgEvbdiA",
+      link: "https://krishnapatilrajput.gumroad.com/"
     },
     {
       title: "UrbanMind AI | Kaggle AI Capstone Project",

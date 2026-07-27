@@ -3,6 +3,7 @@ import './Products.css';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import littleLearnersImg from '../../assets/Little-Learners-Hub 1.png';
 import linkedinImg from '../../assets/Linked in 1.png';
+import blockcraftImg from '../../assets/Blockcraft 1.png';
 
 const Products = ({ searchQuery }) => {
   const { speak, stop } = usePortfolioVoice();
@@ -10,21 +11,33 @@ const Products = ({ searchQuery }) => {
   const products = [
     {
       id: 'little-learners',
+      brand: "Krishnadai Productions",
       title: "Little Learners Hub",
       price: "$4",
       description: "Interactive educational platform for kids. Perfect for early learning and engagement.",
       link: "https://krishnadai.gumroad.com/l/littlelearnershub",
       image: littleLearnersImg,
-      narration: "Purchase Little Learners Hub for only 4 dollars. An interactive educational platform for kids featuring alphabets, numbers, and early childhood games."
+      narration: "Krishnadai Productions presents: Little Learners Hub for only 4 dollars. An interactive educational platform for kids featuring alphabets, numbers, and early childhood games. I can sure that you will get best from me."
     },
     {
       id: 'linkedin-clone',
+      brand: "Krishnadai Productions",
       title: "LinkedIn Clone (React)",
       price: "$10",
       description: "High-fidelity professional networking site clone with post feeds and user profiles.",
       link: "https://krishnadai.gumroad.com/l/linkedin-clone-react",
       image: linkedinImg,
-      narration: "Get the full LinkedIn Clone built with React for 10 dollars. It features professional networking mechanics, user profiles, and interactive feeds."
+      narration: "Krishnadai Productions presents: LinkedIn Clone built with React for 10 dollars. It features professional networking mechanics, user profiles, and interactive feeds. I can sure that you will get best from me."
+    },
+    {
+      id: 'blockcraft-builder',
+      brand: "Krishnadai Productions",
+      title: "BlockCraft Builder: Dream House Edition",
+      price: "$1.04",
+      description: "Build, design, and decorate your dream home in this lightweight HTML5 browser game.",
+      link: "https://krishnadai.gumroad.com/l/BlockCraft-Builder-Dream-House-Edition",
+      image: blockcraftImg,
+      narration: "Krishnadai Productions presents: BlockCraft Builder Dream House Edition for 1.04 US dollars, which is 100 rupees. Build, design, and decorate your dream home in this lightweight HTML5 browser game. I can sure that you will get best from me."
     }
   ];
 
@@ -51,6 +64,7 @@ const Products = ({ searchQuery }) => {
               onMouseEnter={() => speak(product.narration)}
               onMouseLeave={stop}
             >
+              <div className="product-brand-tag">{product.brand}</div>
               <div className="product-image">
                 <img src={product.image} alt={product.title} />
                 <div className="product-price">{product.price}</div>
