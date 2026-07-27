@@ -33,14 +33,6 @@ const Courses = ({ searchQuery }) => {
       link: "https://krishnablogy.blogspot.com/2025/12/sql-course.html"
     },
     {
-      title: "C / C++",
-      description: "Foundational programming with C and C++, covering core syntax and object-oriented principles.",
-      tech: "C, C++, Programming",
-      image: cppImg,
-      screenshots: [cppImg],
-      link: "https://krishnablogy.blogspot.com/2025/12/cc-language-course-codes.html"
-    },
-    {
       title: "Backend Course",
       description: "The ultimate guide for beginners to understand server-side development and APIs.",
       tech: "Node.js, Express, Backend",
@@ -110,16 +102,4 @@ const Courses = ({ searchQuery }) => {
 
   return (
     <section id="courses" className="courses-section">
-      <div className="container">
-        <h2 className="section-title">🎓 Educational Courses</h2>
-        <div className="projects-grid">
-          {filteredCourses.map((course, index) => (
-            <ProjectCard key={index} project={course} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Courses;
+      <div className="

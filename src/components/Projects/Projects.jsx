@@ -167,12 +167,6 @@ import arena5 from '../../assets/ArenaMindAI 5.png';
 import urban1 from '../../assets/UrbanMindAI 1.png';
 import urban2 from '../../assets/UrbanMindAI 2.png';
 
-import blockcraft1 from '../../assets/Blockcraft 1.png';
-import blockcraft2 from '../../assets/Blockcraft 2.png';
-import blockcraft3 from '../../assets/Blockcraft 3.png';
-import blockcraft4 from '../../assets/Blockcraft 4.png';
-
-
 const Projects = ({ searchQuery, setSearchQuery }) => {
   const advancedProjects = [
     {
@@ -192,15 +186,6 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
       screenshots: [arena1, arena2, arena3, arena4, arena5],
       video: "https://www.youtube.com/embed/HRLPRi5-Se4",
       link: "https://krishnablogy.blogspot.com/2026/07/virtual-promptwars-challenge-4-fifa.html"
-    },
-    {
-      title: "Blockcraft Builder - Krishna Patil Rajput Products",
-      description: "Experience the ultimate Blockcraft Builder Dream House Edition. High-quality 3D assets and building system for creative minds. Buy now on Gumroad.",
-      tech: "Unity 3D, C#, Game Assets",
-      image: blockcraft1,
-      screenshots: [blockcraft1, blockcraft2, blockcraft3, blockcraft4],
-      video: "https://www.youtube.com/embed/fT-YgEvbdiA",
-      link: "https://krishnapatilrajput.gumroad.com/"
     },
     {
       title: "UrbanMind AI | Kaggle AI Capstone Project",
@@ -408,69 +393,4 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
 
   const filteredProjects = advancedProjects.filter(project =>
     project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (project.tech && project.tech.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
-
-  return (
-    <section id="projects" className="projects-section">
-      <div className="container">
-        <div className="section-header-with-links">
-          <h2 className="section-title">💻 Advanced Projects</h2>
-
-          <div className="project-search-container">
-            <div className="search-wrapper">
-              <span className="search-icon">🔍</span>
-              <input
-                type="text"
-                placeholder="Search projects by name, tech or description..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="project-search-input"
-              />
-              {searchQuery && (
-                <button className="clear-search" onClick={() => setSearchQuery("")}>✕</button>
-              )}
-            </div>
-          </div>
-
-          <div className="project-quick-links">
-            <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">
-              <img src={githubLogo} alt="GitHub" className="mini-logo" /> GitHub
-            </a>
-            <a href={resumePdf} download="Krishna_Patil_Resume.pdf" title="Resume">
-              <img src={resumeLogo} alt="Resume" className="mini-logo" /> Resume
-            </a>
-            <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">
-              <img src={microsoftLogo} alt="Microsoft" className="mini-logo" /> Microsoft
-            </a>
-            <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">
-              <img src={kaggleLogo} alt="Kaggle" className="mini-logo" /> Kaggle
-            </a>
-            <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">
-              <img src={credlyLogo} alt="Credly" className="mini-logo" /> Credly
-            </a>
-            <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">
-              <img src={hack2skillLogo} alt="Hack2Skills" className="mini-logo" /> Hack2Skills
-            </a>
-          </div>
-        </div>
-
-        {filteredProjects.length > 0 ? (
-          <div className="projects-grid">
-            {filteredProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </div>
-        ) : (
-          <div className="no-results">
-            <p>No projects match your search: "<strong>{searchQuery}</strong>"</p>
-            <button className="btn btn-secondary" onClick={() => setSearchQuery("")}>Clear Search</button>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-};
-
-export default Projects;
+    project.description.toL

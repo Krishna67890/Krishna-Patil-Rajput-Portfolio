@@ -41,6 +41,11 @@
   }
 }
 
+.product-card-wrapper {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
 .product-brand-tag {
   position: absolute;
   top: 15px;
@@ -52,45 +57,13 @@
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
-  z-index: 10;
+  z-index: 100;
   border: 1px solid var(--primary-color);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.product-card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary-color);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-}
-
-.product-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.product-card:hover .product-image img {
-  transform: scale(1.1);
-}
-
-.product-price {
+.product-price-tag {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -101,41 +74,18 @@
   font-weight: 800;
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
   font-size: 1.1rem;
+  z-index: 100;
 }
 
-.product-info {
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.product-buy-action {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
 }
 
-.product-info h3 {
-  font-size: 1.4rem;
-  color: #fff;
-  margin-bottom: 10px;
+.product-buy-action .buy-btn {
+  padding: 6px 15px;
+  font-size: 0.85rem;
 }
 
-.product-info p {
-  color: var(--secondary-text);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  flex-grow: 1;
-}
-
-.buy-btn {
-  background: linear-gradient(90deg, #ff90e8, #ff0000);
-  color: white;
-  border: none;
-  font-weight: 800;
-  padding: 12px;
-  border-radius: 12px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.buy-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 144, 232, 0.4);
-}
