@@ -232,7 +232,7 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
     {
       title: "Patil Electricals | Website For Sale",
       description: "This website is for sale as 1000 rupees. In this you can add products, ratings, and all kind of features are available. Visit then purchase this website for sale.",
-      tech: "React, UI/UX, Service Management",
+      tech: "React, UI/UX Design, Service Management",
       image: mulani1,
       screenshots: [mulani1, mulani2, mulani3, mulani4, mulani5],
       link: "https://krishnablogy.blogspot.com/2026/05/mulani-electricals.html"
@@ -383,29 +383,40 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
     }
   ];
 
-  const filteredProjects = advancedProjects.filter(project =>
-    project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (project.tech && project.tech.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+  const filteredProjects = advancedProjects.filter(project => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = project.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = project.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tech = (project.tech || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (project.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           tech.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   return (
     <section id="projects" className="projects-section">
       <div className="container">
+        <div className="project-search-container">
+          <div className="search-wrapper">
+            <span className="search-icon">🔍</span>
+            <input
+              type="text"
+              className="project-search-input"
+              placeholder="Search projects by name, tech (e.g. UIUX) or your name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="clear-search" onClick={() => setSearchQuery("")}>✕</button>
+            )}
+          </div>
+        </div>
+
         <div className="section-header-with-links">
           <h2 className="section-title">💻 Advanced Projects</h2>
-
-          <div className="project-search-container">
-            <div className="search-wrapper">
-              <span className="search-icon">🔍</span>
-              <input
-                type="text"
-                placeholder="Search projects by name, tech or description..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-          </div>
         </div>
 
         <div className="projects-grid">

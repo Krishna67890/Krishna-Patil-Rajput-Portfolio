@@ -45,11 +45,18 @@ const ToolsCodes = ({ searchQuery }) => {
     }
   ];
 
-  const filteredCodes = codes.filter(code =>
-    code.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    code.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    code.tech.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCodes = codes.filter(code => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = code.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = code.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tech = (code.tech || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (code.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           tech.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredCodes.length === 0 && searchQuery !== "") {
     return null;

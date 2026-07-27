@@ -61,11 +61,18 @@ const AIProjects = ({ searchQuery }) => {
     }
   ];
 
-  const filteredItems = aiItems.filter(item =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.tech.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredItems = aiItems.filter(item => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = item.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = item.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tech = (item.tech || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (item.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           tech.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredItems.length === 0 && searchQuery !== "") {
     return null;

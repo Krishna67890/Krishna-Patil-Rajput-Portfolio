@@ -237,11 +237,18 @@ const Games = ({ searchQuery }) => {
     }
   ];
 
-  const filteredGames = games.filter(game =>
-    game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    game.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    game.tech.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredGames = games.filter(game => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = game.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = game.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tech = (game.tech || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (game.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           tech.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredGames.length === 0 && searchQuery !== "") {
     return null;

@@ -46,10 +46,16 @@ const Products = ({ searchQuery }) => {
     }
   ];
 
-  const filteredProducts = products.filter(product =>
-    product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredProducts = products.filter(product => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = product.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = product.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (product.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredProducts.length === 0 && searchQuery !== "") {
     return null;

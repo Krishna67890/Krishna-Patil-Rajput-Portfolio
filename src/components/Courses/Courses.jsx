@@ -90,11 +90,18 @@ const Courses = ({ searchQuery }) => {
     }
   ];
 
-  const filteredCourses = courses.filter(course =>
-    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    course.tech.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCourses = courses.filter(course => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = course.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = course.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tech = (course.tech || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (course.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           tech.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredCourses.length === 0 && searchQuery !== "") {
     return null;

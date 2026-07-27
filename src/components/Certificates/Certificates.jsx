@@ -139,11 +139,16 @@ const Certificates = ({ searchQuery }) => {
   const [rotation, setRotation] = useState(0);
 
   const filteredCertificates = useMemo(() =>
-    certificatesData.filter(cert =>
-      cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      cert.issuer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      cert.description.toLowerCase().includes(searchQuery.toLowerCase())
-    ), [searchQuery]);
+    certificatesData.filter(cert => {
+      const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const title = cert.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const issuer = cert.issuer.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const desc = cert.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+      return title.includes(query) ||
+             issuer.includes(query) ||
+             desc.includes(query);
+    }), [searchQuery]);
 
   const openGallery = (cert) => {
     const globalIndex = certificatesData.findIndex(c => c.title === cert.title);

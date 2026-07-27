@@ -6,7 +6,7 @@ import resumePdf from '../../assets/Krishna Patil resume.pdf';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import SpotifyPopup from './SpotifyPopup';
 
-const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify, isSpotifyOpen, setIsSpotifyOpen }) => {
+const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify, isSpotifyOpen, setIsSpotifyOpen, searchQuery, setSearchQuery }) => {
   const { speak } = usePortfolioVoice();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -66,6 +66,22 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify, isSp
         </div>
 
         <div className="header-right">
+          <div className="global-search-container">
+            <div className="search-input-wrapper">
+              <span className="search-icon">🔍</span>
+              <input
+                type="text"
+                className="global-search-input"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <button className="clear-search" onClick={() => setSearchQuery("")}>✕</button>
+              )}
+            </div>
+          </div>
+
           <div className="spotify-control-container">
             <button
               className="spotify-trigger-btn"

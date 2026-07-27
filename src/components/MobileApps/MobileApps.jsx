@@ -76,11 +76,18 @@ const MobileApps = ({ searchQuery }) => {
     }
   ];
 
-  const filteredApps = apps.filter(app =>
-    app.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    app.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    app.tech.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredApps = apps.filter(app => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = app.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = app.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tech = (app.tech || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (app.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           tech.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredApps.length === 0 && searchQuery !== "") {
     return null;

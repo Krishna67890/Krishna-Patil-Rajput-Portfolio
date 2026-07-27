@@ -37,12 +37,20 @@ const Hackathons = ({ searchQuery }) => {
     }
   ];
 
-  const filteredHackathons = hackathons.filter(hack =>
-    hack.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    hack.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    hack.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    hack.position.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredHackathons = hackathons.filter(hack => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const title = hack.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = hack.description.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const college = hack.college.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const position = hack.position.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const link = (hack.link || "").toLowerCase();
+
+    return title.includes(query) ||
+           desc.includes(query) ||
+           college.includes(query) ||
+           position.includes(query) ||
+           link.includes(searchQuery.toLowerCase());
+  });
 
   if (filteredHackathons.length === 0 && searchQuery !== "") {
     return null;

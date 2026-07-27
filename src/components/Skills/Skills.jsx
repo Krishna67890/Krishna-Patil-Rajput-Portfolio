@@ -53,15 +53,19 @@ const Skills = ({ searchQuery }) => {
     { name: "Lua", icon: "lua", desc: "Lightweight scripting for games and apps." }
   ];
 
-  const filteredAllSkills = allSkills.filter(skill =>
-    skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    skill.desc.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredAllSkills = allSkills.filter(skill => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const name = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = skill.desc.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return name.includes(query) || desc.includes(query);
+  });
 
-  const filteredFutureSkills = futureSkills.filter(skill =>
-    skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    skill.desc.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredFutureSkills = futureSkills.filter(skill => {
+    const query = searchQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const name = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = skill.desc.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return name.includes(query) || desc.includes(query);
+  });
 
   if (filteredAllSkills.length === 0 && filteredFutureSkills.length === 0 && searchQuery !== "") {
     return null;
