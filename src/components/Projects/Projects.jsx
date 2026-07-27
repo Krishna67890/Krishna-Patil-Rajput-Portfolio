@@ -393,4 +393,37 @@ const Projects = ({ searchQuery, setSearchQuery }) => {
 
   const filteredProjects = advancedProjects.filter(project =>
     project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    project.description.toL
+    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (project.tech && project.tech.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
+  return (
+    <section id="projects" className="projects-section">
+      <div className="container">
+        <div className="section-header-with-links">
+          <h2 className="section-title">💻 Advanced Projects</h2>
+
+          <div className="project-search-container">
+            <div className="search-wrapper">
+              <span className="search-icon">🔍</span>
+              <input
+                type="text"
+                placeholder="Search projects by name, tech or description..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="projects-grid">
+          {filteredProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Projects;

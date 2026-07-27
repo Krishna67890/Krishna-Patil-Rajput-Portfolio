@@ -102,4 +102,16 @@ const Courses = ({ searchQuery }) => {
 
   return (
     <section id="courses" className="courses-section">
-      <div className="
+      <div className="container">
+        <h2 className="section-title">🎓 Educational Courses</h2>
+        <div className="courses-grid">
+          {filteredCourses.map((course, index) => (
+            <ProjectCard key={index} project={course} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Courses;
