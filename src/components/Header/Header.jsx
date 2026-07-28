@@ -72,7 +72,7 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify, isSp
               <input
                 type="text"
                 className="global-search-input"
-                placeholder="Search..."
+                placeholder="Search creative works... ⚡"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />

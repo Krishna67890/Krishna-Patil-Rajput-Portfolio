@@ -39,6 +39,7 @@ const Products = ({ searchQuery }) => {
       price: "$1.04 / ₹100",
       description: "Build, design, and decorate your dream home in this lightweight HTML5 browser game.",
       link: "https://krishnadai.gumroad.com/l/BlockCraft-Builder-Dream-House-Edition",
+      itchLink: "https://krishnapatilrajput.itch.io/blockcraft-builder-dream-house-edition",
       image: blockcraft1,
       screenshots: [blockcraft1, blockcraft2, blockcraft3, blockcraft4],
       video: "https://www.youtube.com/embed/fT-YgEvbdiA",
@@ -51,10 +52,12 @@ const Products = ({ searchQuery }) => {
     const title = product.title.toLowerCase().replace(/[^a-z0-9]/g, '');
     const desc = product.description.toLowerCase().replace(/[^a-z0-9]/g, '');
     const link = (product.link || "").toLowerCase();
+    const itchLink = (product.itchLink || "").toLowerCase();
 
     return title.includes(query) ||
            desc.includes(query) ||
-           link.includes(searchQuery.toLowerCase());
+           link.includes(searchQuery.toLowerCase()) ||
+           itchLink.includes(searchQuery.toLowerCase());
   });
 
   if (filteredProducts.length === 0 && searchQuery !== "") {
@@ -84,10 +87,20 @@ const Products = ({ searchQuery }) => {
                   href={product.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn buy-btn"
+                  className="btn buy-btn gumroad-btn"
                 >
-                  Buy on Gumroad
+                  🛍️ Buy on Gumroad
                 </a>
+                {product.itchLink && (
+                  <a
+                    href={product.itchLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn buy-btn itch-btn"
+                  >
+                    🎮 Buy on itch
+                  </a>
+                )}
               </div>
             </div>
           ))}

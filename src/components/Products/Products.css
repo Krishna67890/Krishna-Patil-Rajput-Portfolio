@@ -79,13 +79,45 @@
 
 .product-buy-action {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  right: 15px;
   z-index: 100;
+  display: flex;
+  gap: 10px;
 }
 
 .product-buy-action .buy-btn {
-  padding: 6px 15px;
+  padding: 8px 16px;
   font-size: 0.85rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gumroad-btn {
+  background: #ff90e8; /* Gumroad pink */
+  color: #000 !important;
+  border: 1px solid #000;
+}
+
+.gumroad-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px #000;
+}
+
+.itch-btn {
+  background: #fa5c5c; /* itch.io redish */
+  color: #fff !important;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.itch-btn:hover {
+  transform: translateY(-2px);
+  background: #ff4444;
+  box-shadow: 0 4px 12px rgba(250, 92, 92, 0.4);
 }
 
