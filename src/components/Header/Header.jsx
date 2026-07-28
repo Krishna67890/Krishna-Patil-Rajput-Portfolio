@@ -68,7 +68,10 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal, onOpenSpotify, isSp
         <div className="header-right">
           <div className="global-search-container">
             <div className="search-input-wrapper">
-              <span className="search-icon">🔍</span>
+              <svg className="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
               <input
                 type="text"
                 className="global-search-input"
