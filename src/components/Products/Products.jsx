@@ -10,7 +10,6 @@ import blockcraft4 from '../../assets/Blockcraft 4.png';
 import candyMatch1 from '../../assets/Candy-Match 1.png';
 import candyMatch2 from '../../assets/Candy-Match 2.png';
 import candyMatch3 from '../../assets/Candy-Match 3.png';
-import candyCrushImg from '../../assets/Candy Crush Game.png';
 
 const Products = ({ searchQuery }) => {
   const products = [
@@ -23,7 +22,7 @@ const Products = ({ searchQuery }) => {
       link: "https://krishnadai.gumroad.com/l/littlelearnershub",
       image: littleLearnersImg,
       screenshots: [littleLearnersImg],
-      narration: "Krishnadai Productions presents: Little Learners Hub for only 4 dollars. An interactive educational platform for kids featuring alphabets, numbers, and early childhood games. I can sure that you will get best from me."
+      narration: "Krishnadai Productions presents: Little Learners Hub for only 4 dollars. An interactive educational platform for kids featuring alphabets, numbers, and early childhood games. I am sure that you will get the best from me."
     },
     {
       id: 'linkedin-clone',
@@ -34,7 +33,7 @@ const Products = ({ searchQuery }) => {
       link: "https://krishnadai.gumroad.com/l/linkedin-clone-react",
       image: linkedinImg,
       screenshots: [linkedinImg],
-      narration: "Krishnadai Productions presents: LinkedIn Clone built with React for 10 dollars. It features professional networking mechanics, user profiles, and interactive feeds. I can sure that you will get best from me."
+      narration: "Krishnadai Productions presents: LinkedIn Clone built with React for 10 dollars. It features professional networking mechanics, user profiles, and interactive feeds. I am sure that you will get the best from me."
     },
     {
       id: 'blockcraft-builder',
@@ -47,7 +46,7 @@ const Products = ({ searchQuery }) => {
       image: blockcraft1,
       screenshots: [blockcraft1, blockcraft2, blockcraft3, blockcraft4],
       video: "https://www.youtube.com/embed/fT-YgEvbDOA",
-      narration: "Krishnadai Productions presents: BlockCraft Builder Dream House Edition for 1.04 US dollars, which is 100 rupees. Build, design, and decorate your dream home in this lightweight HTML5 browser game. I can sure that you will get best from me."
+      narration: "Krishnadai Productions presents: BlockCraft Builder Dream House Edition for 1.04 US dollars, which is 100 rupees. Build, design, and decorate your dream home in this lightweight HTML5 browser game. I am sure that you will get the best from me."
     },
     {
       id: 'candy-match',
@@ -59,19 +58,7 @@ const Products = ({ searchQuery }) => {
       itchLink: "https://krishnapatilrajput.itch.io/candy-match-game",
       image: candyMatch1,
       screenshots: [candyMatch1, candyMatch2, candyMatch3],
-      narration: "Krishnadai Productions presents: Candy Match Game for only 2 dollars. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. Available on Gumroad and Itch.io. I can sure that you will get best from me."
-    },
-    {
-      id: 'candy-match-itch',
-      brand: "Krishnadai Productions",
-      title: "Candy Match Game (Itch.io)",
-      price: "$1",
-      description: "A fun and addictive match-three puzzle game with colorful graphics and engaging levels. Special discounted price on Itch.io!",
-      link: "https://krishnapatilrajput.itch.io/candy-match-game",
-      itchLink: "https://krishnapatilrajput.itch.io/candy-match-game",
-      image: candyCrushImg,
-      screenshots: [candyCrushImg, candyMatch1, candyMatch2, candyMatch3],
-      narration: "Krishnadai Productions presents: Candy Match Game for only 1 dollar on itch.io. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. I can sure that you will get best from me."
+      narration: "Krishnadai Productions presents: Candy Match Game for only 2 dollars. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. Available on Gumroad and Itch.io. I am sure that you will get the best from me."
     }
   ];
 
