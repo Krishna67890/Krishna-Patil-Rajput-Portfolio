@@ -14,6 +14,7 @@ const Hackathons = ({ searchQuery }) => {
       position: "1st Place 🏆",
       college: "Matoshri College of Engineering",
       description: "A specialized travel guide application for exploring the beauty of Sikkim with itinerary planning and location tracking.",
+      link: "https://github.com/Krishna67890/Sikkim-Travel-App",
       image: sikkimImg,
       narration: "Sikkim Travel App Hackathon, 1st Place at Matoshri college of Engineering. It features specialized travel guide application for exploring the beauty of Sikkim with itinerary planning."
     },

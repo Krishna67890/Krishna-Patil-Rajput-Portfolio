@@ -52,13 +52,13 @@ const Products = ({ searchQuery }) => {
       id: 'candy-match',
       brand: "Krishnadai Productions",
       title: "Candy Match Game",
-      price: "$2",
+      price: "$1",
       description: "A fun and addictive match-three puzzle game with colorful graphics and engaging levels.",
       link: "https://krishnadai.gumroad.com/l/candy-match-game",
       itchLink: "https://krishnapatilrajput.itch.io/candy-match-game",
       image: candyMatch1,
       screenshots: [candyMatch1, candyMatch2, candyMatch3],
-      narration: "Krishnadai Productions presents: Candy Match Game for only 2 dollars. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. Available on Gumroad and Itch.io. I am sure that you will get the best from me."
+      narration: "Krishnadai Productions presents: Candy Match Game for only 1 dollar. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. Available on Gumroad and Itch.io. I am sure that you will get the best from me."
     }
   ];
 
