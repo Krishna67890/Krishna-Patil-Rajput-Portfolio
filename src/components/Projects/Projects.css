@@ -54,18 +54,27 @@
   position: absolute;
   left: 20px;
   color: var(--primary-color);
-  font-size: 1.2rem;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  pointer-events: none;
+  /* Ultimate sharpness fix */
+  shape-rendering: crispEdges;
+  filter: none !important;
+  transform: none !important;
+  outline: none !important;
+  text-shadow: none !important;
 }
 
 .project-search-input {
   width: 100%;
   padding: 15px 50px 15px 55px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.9);
   border: 1px solid var(--border-color);
   border-radius: 50px;
   color: var(--text-primary);
   font-size: 1.1rem;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }

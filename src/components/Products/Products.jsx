@@ -7,6 +7,10 @@ import blockcraft1 from '../../assets/Blockcraft 1.png';
 import blockcraft2 from '../../assets/Blockcraft 2.png';
 import blockcraft3 from '../../assets/Blockcraft 3.png';
 import blockcraft4 from '../../assets/Blockcraft 4.png';
+import candyMatch1 from '../../assets/Candy-Match 1.png';
+import candyMatch2 from '../../assets/Candy-Match 2.png';
+import candyMatch3 from '../../assets/Candy-Match 3.png';
+import candyCrushImg from '../../assets/Candy Crush Game.png';
 
 const Products = ({ searchQuery }) => {
   const products = [
@@ -42,8 +46,32 @@ const Products = ({ searchQuery }) => {
       itchLink: "https://krishnapatilrajput.itch.io/blockcraft-builder-dream-house-edition",
       image: blockcraft1,
       screenshots: [blockcraft1, blockcraft2, blockcraft3, blockcraft4],
-      video: "https://www.youtube.com/embed/fT-YgEvbdiA",
+      video: "https://www.youtube.com/embed/fT-YgEvbDOA",
       narration: "Krishnadai Productions presents: BlockCraft Builder Dream House Edition for 1.04 US dollars, which is 100 rupees. Build, design, and decorate your dream home in this lightweight HTML5 browser game. I can sure that you will get best from me."
+    },
+    {
+      id: 'candy-match',
+      brand: "Krishnadai Productions",
+      title: "Candy Match Game",
+      price: "$2",
+      description: "A fun and addictive match-three puzzle game with colorful graphics and engaging levels.",
+      link: "https://krishnadai.gumroad.com/l/candy-match-game",
+      itchLink: "https://krishnapatilrajput.itch.io/candy-match-game",
+      image: candyMatch1,
+      screenshots: [candyMatch1, candyMatch2, candyMatch3],
+      narration: "Krishnadai Productions presents: Candy Match Game for only 2 dollars. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. Available on Gumroad and Itch.io. I can sure that you will get best from me."
+    },
+    {
+      id: 'candy-match-itch',
+      brand: "Krishnadai Productions",
+      title: "Candy Match Game (Itch.io)",
+      price: "$1",
+      description: "A fun and addictive match-three puzzle game with colorful graphics and engaging levels. Special discounted price on Itch.io!",
+      link: "https://krishnapatilrajput.itch.io/candy-match-game",
+      itchLink: "https://krishnapatilrajput.itch.io/candy-match-game",
+      image: candyCrushImg,
+      screenshots: [candyCrushImg, candyMatch1, candyMatch2, candyMatch3],
+      narration: "Krishnadai Productions presents: Candy Match Game for only 1 dollar on itch.io. A fun and addictive match-three puzzle game featuring colorful graphics and engaging levels. I can sure that you will get best from me."
     }
   ];
 
@@ -83,14 +111,16 @@ const Products = ({ searchQuery }) => {
                 }}
               />
               <div className="product-buy-action">
-                <a
-                  href={product.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn buy-btn gumroad-btn"
-                >
-                  🛍️ Buy on Gumroad
-                </a>
+                {product.link && product.link.includes('gumroad') && (
+                  <a
+                    href={product.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn buy-btn gumroad-btn"
+                  >
+                    🛍️ Buy on Gumroad
+                  </a>
+                )}
                 {product.itchLink && (
                   <a
                     href={product.itchLink}

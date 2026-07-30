@@ -60,39 +60,33 @@
   transition: all 0.3s ease;
 }
 
-.search-input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1.5px solid rgba(59, 130, 246, 0.2);
-  border-radius: 24px;
-  padding: 6px 14px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
 .search-icon-svg {
   width: 20px;
   height: 20px;
   margin-right: 12px;
   color: var(--primary-color);
   flex-shrink: 0;
-  stroke-width: 2px;
-  /* Fix for blurriness: Use geometricPrecision and ensure no half-pixel positioning */
-  shape-rendering: geometricPrecision;
-  filter: none !important;
-  text-shadow: none !important;
-  transform: translateZ(0); /* Hardware acceleration without 3D transforms */
   display: block;
+  /* Ultimate sharp rendering fix */
+  shape-rendering: crispEdges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Prevent any browser-level smoothing that might cause blur */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
 }
 
 .search-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1.5px solid rgba(59, 130, 246, 0.2);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1.5px solid rgba(59, 130, 246, 0.3);
   border-radius: 24px;
   padding: 8px 16px;
   transition: all 0.3s ease;

@@ -128,7 +128,7 @@ const Games = ({ searchQuery }) => {
       github: "#"
     },
     {
-      title: "Candy Crush Clone",
+      title: "Candy Match Game",
       description: "A vibrant match-three puzzle game featuring colorful animations and satisfying sound effects.",
       tech: "JavaScript, CSS Grid",
       image: candy,
