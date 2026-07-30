@@ -5,8 +5,8 @@ import './Contact.css';
 // Logo Imports
 import githubLogo from '../../assets/Links/Github logo.jpg';
 import linktreeLogo from '../../assets/Links/Linktree.png';
-import linkedinLogo from '../../assets/Linked in 1.png';
-import youtubeLogo from '../../assets/Youtube 1.png';
+import linkedinLogo from '../../assets/Linkedin logo.png';
+import youtubeLogo from '../../assets/Youtube logo.png';
 import bloggerLogo from '../../assets/Krishna Bloggers 1.jpg';
 
 const Contact = () => {
@@ -102,7 +102,7 @@ const Contact = () => {
                     <img src={linktreeLogo} alt="Linktree" className="contact-social-img" />
                     <span className="social-text">Linktree</span>
                   </a>
-                  <a href="https://www.instagram.com/mr.Krishna_patil_12" target="_blank" rel="noopener noreferrer" className="social-link instagram" onMouseEnter={() => speak("Follow my personal journey on Instagram.")}>
+                  <a href="https://www.instagram.com/mr.krishna_rajput_12" target="_blank" rel="noopener noreferrer" className="social-link instagram" onMouseEnter={() => speak("Follow my personal journey on Instagram.")}>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" className="contact-social-img" />
                     <span className="social-text">Instagram</span>
                   </a>

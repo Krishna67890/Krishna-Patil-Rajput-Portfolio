@@ -8,7 +8,7 @@ import kaggleLogo from '../../assets/Links/Kaggle logo .png';
 import credlyLogo from '../../assets/Links/credly logo.png';
 import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
 import resumeLogo from '../../assets/Links/resume logo.jpg';
-import linkedinLogo from '../../assets/Linked in 1.png';
+import linkedinLogo from '../../assets/Linkedin logo.png';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import originalPhoto from '../../assets/Krishna-Original.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';

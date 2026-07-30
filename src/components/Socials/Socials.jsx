@@ -9,8 +9,8 @@ import microsoftLogo from '../../assets/Links/Microsoft logo.png';
 import kaggleLogo from '../../assets/Links/Kaggle logo .png';
 import credlyLogo from '../../assets/Links/credly logo.png';
 import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
-import linkedinLogo from '../../assets/Linked in 1.png';
-import youtubeLogo from '../../assets/Youtube 1.png';
+import linkedinLogo from '../../assets/Linkedin logo.png';
+import youtubeLogo from '../../assets/Youtube logo.png';
 import bloggerLogo from '../../assets/Krishna Bloggers 1.jpg';
 import resumeLogo from '../../assets/Links/resume logo.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
@@ -28,7 +28,7 @@ const Socials = () => {
     { name: 'Blogger', url: 'https://krishnablogy.blogspot.com/', icon: bloggerLogo, isImg: true, desc: "Read my latest tech articles on my Blog." },
     { name: 'YouTube', url: 'https://www.youtube.com/@atharva_gaming_yt', icon: youtubeLogo, isImg: true, desc: "Watch my coding and gaming content on YouTube." },
     { name: 'Linktree', url: 'https://linktr.ee/KRISHNACODERS', icon: linktreeLogo, isImg: true, desc: "View all my links in one place on Linktree." },
-    { name: 'Instagram', url: 'https://www.instagram.com/mr.Krishna_patil_12', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png', isImg: true, desc: "Follow my personal journey on Instagram." },
+    { name: 'Instagram', url: 'https://www.instagram.com/mr.krishna_rajput_12', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png', isImg: true, desc: "Follow my personal journey on Instagram." },
     { name: 'WhatsApp Channel', url: 'https://www.whatsapp.com/channel/0029Vb6Ib4ULI8YgwrV7C21C', icon: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg', isImg: true, desc: "Join my WhatsApp channel for regular updates." }
   ];
 

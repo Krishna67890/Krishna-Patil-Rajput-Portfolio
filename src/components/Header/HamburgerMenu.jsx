@@ -1,7 +1,7 @@
 import React from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import githubLogo from '../../assets/Links/Github logo.jpg';
-import linkedinLogo from '../../assets/Linked in 1.png';
+import linkedinLogo from '../../assets/Linkedin logo.png';
 import './HamburgerMenu.css';
 
 const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
