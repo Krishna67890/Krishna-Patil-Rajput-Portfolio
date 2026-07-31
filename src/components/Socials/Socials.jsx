@@ -11,7 +11,7 @@ import credlyLogo from '../../assets/Links/credly logo.png';
 import hack2skillLogo from '../../assets/Links/Hack2skill logo.jpg';
 import linkedinLogo from '../../assets/Linkedin logo.png';
 import youtubeLogo from '../../assets/Youtube logo.png';
-import bloggerLogo from '../../assets/Krishna Bloggers 1.jpg';
+import bloggerLogo from '../../assets/Blogger Logo.webp';
 import resumeLogo from '../../assets/Links/resume logo.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 
