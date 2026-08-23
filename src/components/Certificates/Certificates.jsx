@@ -19,10 +19,22 @@ import copadoCert from '../../assets/Certificates/copodo-certified-capadoai-cert
 // PDF Certificates
 import finlitCert from '../../assets/Certificates/Innovate4FinLit By Hack2skill Game Challenge.pdf';
 import prototypeCert from '../../assets/Certificates/Prototype Submission solution Challenge 2026 - Build with AI.pdf';
+import spaceHackCert from '../../assets/Certificates/Bhartiya Antariksh Hacathon 2026.pdf';
+import amdHackCert from '../../assets/Certificates/AMD Developer Hackathon_ ACT II-certificate.pdf';
+import promptWars1Cert from '../../assets/Certificates/PromptWars Virtual Challenge 1.pdf';
+import promptWars2Cert from '../../assets/Certificates/PromptWars Virtual Challenge 2.pdf';
+import promptWars3Cert from '../../assets/Certificates/Promptwars Virtual Challenge 3.pdf';
+import promptWars4Cert from '../../assets/Certificates/Promptwars Virtual Challenge 4.pdf';
 
 // PNG Previews for PDFs
 import finlitImg from '../../assets/Certificates/Innovate4FinLit-Game-Challenge.png';
 import prototypeImg from '../../assets/Certificates/Solution Challenge 2026 Build with AI.png';
+import spaceHackImg from '../../assets/Certificates/Bhartiya Antariksh Hacathon 2026.png';
+import amdHackImg from '../../assets/Certificates/AMD Developer Hackathon_ ACT II-certificate.png';
+import promptWars1Img from '../../assets/Certificates/PromptWars Virtual Challenge 1.png';
+import promptWars2Img from '../../assets/Certificates/PromptWars Virtual Challenge 2.png';
+import promptWars3Img from '../../assets/Certificates/PromptWars Virtual Challenge 3.png';
+import promptWars4Img from '../../assets/Certificates/PromptWars Virtual Challenge 4.png';
 
 const certificatesData = [
   {
@@ -33,6 +45,60 @@ const certificatesData = [
     type: "pdf",
     description: "Official recognition for building an AI prototype for the Google Solution Challenge 2026.",
     narration: "Google Build with AI Prototype Certificate. This recognizes the successful submission of an AI-powered solution for the Google Solution Challenge 2026."
+  },
+  {
+    title: "AMD Developer Hackathon ACT II",
+    issuer: "AMD / Hack2skill",
+    file: amdHackCert,
+    image: amdHackImg,
+    type: "pdf",
+    description: "Certificate of achievement in the AMD Developer Hackathon ACT II for high-performance computing.",
+    narration: "AMD Developer Hackathon ACT 2 Certificate. Recognized for high-performance computing solutions."
+  },
+  {
+    title: "Bhartiya Antariksh Hackathon 2026",
+    issuer: "ISRO / Government of India",
+    file: spaceHackCert,
+    image: spaceHackImg,
+    type: "pdf",
+    description: "Official recognition for participation in the Bhartiya Antariksh Hackathon 2026, focused on space technology.",
+    narration: "Bhartiya Antariksh Hackathon 2026 Certificate. Honored for space-tech innovation."
+  },
+  {
+    title: "PromptWars Challenge 1",
+    issuer: "Google Developer Groups",
+    file: promptWars1Cert,
+    image: promptWars1Img,
+    type: "pdf",
+    description: "Awarded for excellence in Prompt Engineering during PromptWars Challenge 1.",
+    narration: "Prompt Wars Virtual Challenge 1 Certificate. Demonstrating expertise in generative AI prompt engineering."
+  },
+  {
+    title: "PromptWars Challenge 2",
+    issuer: "Google Developer Groups",
+    file: promptWars2Cert,
+    image: promptWars2Img,
+    type: "pdf",
+    description: "Awarded for excellence in Prompt Engineering during PromptWars Challenge 2.",
+    narration: "Prompt Wars Virtual Challenge 2 Certificate."
+  },
+  {
+    title: "PromptWars Challenge 3",
+    issuer: "Google Developer Groups",
+    file: promptWars3Cert,
+    image: promptWars3Img,
+    type: "pdf",
+    description: "Awarded for excellence in Prompt Engineering during PromptWars Challenge 3.",
+    narration: "Prompt Wars Virtual Challenge 3 Certificate."
+  },
+  {
+    title: "PromptWars Challenge 4",
+    issuer: "Google Developer Groups",
+    file: promptWars4Cert,
+    image: promptWars4Img,
+    type: "pdf",
+    description: "Awarded for excellence in Prompt Engineering during PromptWars Challenge 4.",
+    narration: "Prompt Wars Virtual Challenge 4 Certificate."
   },
   {
     title: "Innovate4FinLit Winner",
