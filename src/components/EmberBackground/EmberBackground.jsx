@@ -10,8 +10,8 @@ const EmberBackground = () => {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
-    const gridSize = 20;
-    const gap = 4;
+    const gridSize = 28;
+    const gap = 5;
     let cols, rows;
     let grid = [];
     let snakes = [];
@@ -147,6 +147,11 @@ const EmberBackground = () => {
     };
 
     const animate = () => {
+      if (document.hidden) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+
       const colors = getThemeColors();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 

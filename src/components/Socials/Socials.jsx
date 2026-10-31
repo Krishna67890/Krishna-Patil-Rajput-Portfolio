@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
+import SocialSelectModal from './SocialSelectModal';
 import './Socials.css';
 
 // Logo Imports
-import githubLogo from '../../assets/Links/Github logo.jpg';
+import githubLogo from '../../assets/Links/Github-Logo.png';
 import linktreeLogo from '../../assets/Links/Linktree.png';
 import microsoftLogo from '../../assets/Links/Microsoft logo.png';
 import kaggleLogo from '../../assets/Links/Kaggle logo .png';
@@ -13,10 +14,12 @@ import linkedinLogo from '../../assets/Linkedin logo.png';
 import youtubeLogo from '../../assets/Youtube logo.png';
 import bloggerLogo from '../../assets/Blogger Logo.webp';
 import resumeLogo from '../../assets/Links/resume logo.jpg';
-import resumePdf from '../../assets/Krishna Patil resume.pdf';
+import resumePdf from '../../assets/Krishna Patil resume_1.pdf';
 
-const Socials = () => {
+const Socials = ({ searchQuery }) => {
   const { speak } = usePortfolioVoice();
+  const [modalType, setModalType] = useState(null);
+
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/krishna67890', icon: githubLogo, isImg: true, desc: "Check out my open source projects on GitHub." },
     { name: 'Resume', url: resumePdf, icon: resumeLogo, isImg: true, desc: "Download my professional resume.", isDownload: true },
@@ -32,12 +35,35 @@ const Socials = () => {
     { name: 'WhatsApp Channel', url: 'https://www.whatsapp.com/channel/0029Vb6Ib4ULI8YgwrV7C21C', icon: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg', isImg: true, desc: "Join my WhatsApp channel for regular updates." }
   ];
 
+  const filteredSocials = socialLinks.filter(social => {
+    const query = (searchQuery || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+    const name = social.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const desc = social.desc.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return query === '' || name.includes(query) || desc.includes(query) || 'socials'.includes(query) || 'connect'.includes(query);
+  });
+
+  if (filteredSocials.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
+  const handleClick = (e, social) => {
+    if (social.name === 'YouTube') {
+      e.preventDefault();
+      setModalType('youtube');
+      speak("Select which YouTube channel you would like to visit.");
+    } else if (social.name === 'Instagram') {
+      e.preventDefault();
+      setModalType('instagram');
+      speak("Select which Instagram profile you would like to watch.");
+    }
+  };
+
   return (
     <section id="socials" className="socials-section">
       <div className="container">
         <h2 className="section-title" onMouseEnter={() => speak("Connect with me across these platforms. I am active on all of them.")}>Connect With Me</h2>
         <div className="socials-grid">
-          {socialLinks.map((social, index) => (
+          {filteredSocials.map((social, index) => (
             <a
               key={index}
               href={social.url}
@@ -45,6 +71,7 @@ const Socials = () => {
               rel="noopener noreferrer"
               download={social.isDownload ? "Krishna_Patil_Resume.pdf" : undefined}
               className="social-card"
+              onClick={(e) => handleClick(e, social)}
               onMouseEnter={() => speak(social.desc)}
             >
               <span className="social-icon">
@@ -59,6 +86,7 @@ const Socials = () => {
           ))}
         </div>
       </div>
+      <SocialSelectModal isOpen={modalType !== null} type={modalType} onClose={() => setModalType(null)} />
     </section>
   );
 };

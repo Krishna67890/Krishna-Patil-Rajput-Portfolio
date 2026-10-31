@@ -25,6 +25,9 @@ import promptWars1Cert from '../../assets/Certificates/PromptWars Virtual Challe
 import promptWars2Cert from '../../assets/Certificates/PromptWars Virtual Challenge 2.pdf';
 import promptWars3Cert from '../../assets/Certificates/Promptwars Virtual Challenge 3.pdf';
 import promptWars4Cert from '../../assets/Certificates/Promptwars Virtual Challenge 4.pdf';
+import genAiAcademy2Pdf from '../../assets/Certificates/GenAIAcademyAPAC2026-Cohert-2-Hacathon-H2S.pdf';
+import genAiMastermindPdf from '../../assets/Certificates/Generative AI Mastermind Certificate.pdf';
+import googleCloudGenAi3Pdf from '../../assets/Certificates/Google Cloud Gen AI Academy APAC Edition Cohort 3.pdf';
 
 // PNG Previews for PDFs
 import finlitImg from '../../assets/Certificates/Innovate4FinLit-Game-Challenge.png';
@@ -35,8 +38,46 @@ import promptWars1Img from '../../assets/Certificates/PromptWars Virtual Challen
 import promptWars2Img from '../../assets/Certificates/PromptWars Virtual Challenge 2.png';
 import promptWars3Img from '../../assets/Certificates/PromptWars Virtual Challenge 3.png';
 import promptWars4Img from '../../assets/Certificates/PromptWars Virtual Challenge 4.png';
+import genAiAcademy2Img from '../../assets/Certificates/GenAIAcademyAPAC2026-Cohert-2-Hacathon-H2S.png';
+import genAiMastermindImg from '../../assets/Certificates/Generative AI Mastermind Certificate.png';
+import googleCloudGenAi3Img from '../../assets/Certificates/Google Cloud Gen AI Academy APAC Edition Cohort 3.png';
+import viksitBharatImg from '../../assets/Certificates/Viksit-Bharat-Young-Leaders-Dialogue-2027-Affairs-and-Sports.png';
 
 const certificatesData = [
+  {
+    title: "Google Cloud Gen AI Academy - Cohort 3",
+    issuer: "Google Cloud / APAC Edition",
+    file: googleCloudGenAi3Pdf,
+    image: googleCloudGenAi3Img,
+    type: "pdf",
+    description: "Successfully completed Google Cloud Gen AI Academy APAC Edition Cohort 3.",
+    narration: "Google Cloud Gen AI Academy APAC Edition Cohort 3 Certificate."
+  },
+  {
+    title: "Gen AI Academy APAC 2026 - Cohort 2 Hackathon",
+    issuer: "Google Cloud Gen AI",
+    file: genAiAcademy2Pdf,
+    image: genAiAcademy2Img,
+    type: "pdf",
+    description: "Certificate of achievement for participation and innovation in Gen AI Academy APAC Cohort 2 Hackathon.",
+    narration: "Gen AI Academy APAC 2026 Cohort 2 Hackathon Certificate."
+  },
+  {
+    title: "Generative AI Mastermind",
+    issuer: "Mastermind Certification",
+    file: genAiMastermindPdf,
+    image: genAiMastermindImg,
+    type: "pdf",
+    description: "Completed Generative AI Mastermind professional training and certification.",
+    narration: "Generative AI Mastermind Certificate."
+  },
+  {
+    title: "Viksit Bharat Young Leaders Dialogue 2027",
+    issuer: "Affairs and Sports",
+    image: viksitBharatImg,
+    description: "Recognition for participation in Viksit Bharat Young Leaders Dialogue 2027 (Affairs and Sports).",
+    narration: "Viksit Bharat Young Leaders Dialogue 2027 Certificate for Affairs and Sports."
+  },
   {
     title: "Google Build with AI Prototype",
     issuer: "Google Solution Challenge 2026",

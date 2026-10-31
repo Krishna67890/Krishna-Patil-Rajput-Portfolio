@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HamburgerMenu from './HamburgerMenu';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Header.css';
-import resumePdf from '../../assets/Krishna Patil resume.pdf';
+import resumePdf from '../../assets/Krishna Patil resume_1.pdf';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import SpotifyPopup from './SpotifyPopup';
 

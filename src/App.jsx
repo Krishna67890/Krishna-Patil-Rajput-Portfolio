@@ -26,11 +26,11 @@ import './App.css';
 
 function App() {
   const appRef = useRef(null);
+  const progressBarRef = useRef(null);
   const [isJourneyOpen, setIsJourneyOpen] = useState(false);
   const [isGameOpen, setIsGameOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isSpotifyOpen, setIsSpotifyOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
 
   useGsapAnimations(appRef);
@@ -48,20 +48,34 @@ function App() {
   }, [isGameOpen, isJourneyOpen]);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.pageYOffset;
-      setScrollProgress((currentScroll / totalScroll) * 100);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (progressBarRef.current) {
+            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+            if (totalScroll > 0) {
+              const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+              const progress = Math.min(100, Math.max(0, (currentScroll / totalScroll) * 100));
+              progressBarRef.current.style.width = `${progress}%`;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="App" ref={appRef}>
       <EmberBackground />
-      <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }}></div>
+      <div className="scroll-progress-bar" ref={progressBarRef} style={{ width: '0%' }}></div>
 
       <Sidebar
         onOpenJourney={() => setIsJourneyOpen(true)}
@@ -85,7 +99,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <main>
-        <Hero />
+        <Hero searchQuery={searchQuery} />
         <Projects searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <Hackathons searchQuery={searchQuery} />
         <Products searchQuery={searchQuery} />
@@ -96,9 +110,9 @@ function App() {
         <Courses searchQuery={searchQuery} />
         <ToolsCodes searchQuery={searchQuery} />
         <Skills searchQuery={searchQuery} />
-        <Socials />
-        <Contact />
-        <Background />
+        <Socials searchQuery={searchQuery} />
+        <Contact searchQuery={searchQuery} />
+        <Background searchQuery={searchQuery} />
       </main>
       <Footer />
     </div>

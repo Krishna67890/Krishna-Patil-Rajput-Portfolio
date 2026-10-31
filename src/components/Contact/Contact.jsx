@@ -1,21 +1,38 @@
 import React, { useState } from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
+import SocialSelectModal from '../Socials/SocialSelectModal';
 import './Contact.css';
 
 // Logo Imports
-import githubLogo from '../../assets/Links/Github logo.jpg';
+import githubLogo from '../../assets/Links/Github-Logo.png';
 import linktreeLogo from '../../assets/Links/Linktree.png';
 import linkedinLogo from '../../assets/Linkedin logo.png';
 import youtubeLogo from '../../assets/Youtube logo.png';
 import bloggerLogo from '../../assets/Krishna Bloggers 1.jpg';
 
-const Contact = () => {
+const Contact = ({ searchQuery }) => {
   const { speak } = usePortfolioVoice();
+  const [modalType, setModalType] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+
+  const query = (searchQuery || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+  const matches = query === '' ||
+                  'contact'.includes(query) ||
+                  'getintouch'.includes(query) ||
+                  'email'.includes(query) ||
+                  'message'.includes(query) ||
+                  'location'.includes(query) ||
+                  'nashik'.includes(query) ||
+                  'github'.includes(query) ||
+                  'linkedin'.includes(query);
+
+  if (!matches && searchQuery !== "") {
+    return null;
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -94,7 +111,14 @@ const Contact = () => {
                     <img src={bloggerLogo} alt="Blogger" className="contact-social-img" />
                     <span className="social-text">Blogger</span>
                   </a>
-                  <a href="https://www.youtube.com/@atharva_gaming_yt" target="_blank" rel="noopener noreferrer" className="social-link youtube" onMouseEnter={() => speak("Watch my coding and gaming content on YouTube.")}>
+                  <a
+                    href="https://www.youtube.com/@atharva_gaming_yt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link youtube"
+                    onClick={(e) => { e.preventDefault(); setModalType('youtube'); speak("Select which YouTube channel you would like to visit."); }}
+                    onMouseEnter={() => speak("Watch my coding and gaming content on YouTube.")}
+                  >
                     <img src={youtubeLogo} alt="YouTube" className="contact-social-img" />
                     <span className="social-text">YouTube</span>
                   </a>
@@ -102,7 +126,14 @@ const Contact = () => {
                     <img src={linktreeLogo} alt="Linktree" className="contact-social-img" />
                     <span className="social-text">Linktree</span>
                   </a>
-                  <a href="https://www.instagram.com/mr.krishna_rajput_12" target="_blank" rel="noopener noreferrer" className="social-link instagram" onMouseEnter={() => speak("Follow my personal journey on Instagram.")}>
+                  <a
+                    href="https://www.instagram.com/mr.krishna_rajput_12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-link instagram"
+                    onClick={(e) => { e.preventDefault(); setModalType('instagram'); speak("Select which Instagram profile you would like to watch."); }}
+                    onMouseEnter={() => speak("Follow my personal journey on Instagram.")}
+                  >
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" className="contact-social-img" />
                     <span className="social-text">Instagram</span>
                   </a>
@@ -191,6 +222,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      <SocialSelectModal isOpen={modalType !== null} type={modalType} onClose={() => setModalType(null)} />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import sikkimImg from '../../assets/Siikkim 1.png';
 import prixImg from '../../assets/Prix Robotics 1.png';
 import aiVibeImg from '../../assets/AI assistant 1.png';
+import agenticAiImg from '../../assets/Certificates/International Agentic AI Hacathon Sandip University.jpg';
 
 const Hackathons = ({ searchQuery }) => {
   const { speak, stop } = usePortfolioVoice();
@@ -14,9 +15,10 @@ const Hackathons = ({ searchQuery }) => {
       position: "1st Place 🏆",
       college: "Matoshri College of Engineering",
       description: "A specialized travel guide application for exploring the beauty of Sikkim with itinerary planning and location tracking.",
+      members: ["Krishna Patil", "Darshan Devre", "Chaitanya Devre", "Shraddha Chavan", "Zalak Bora", "Diksha Khambayade"],
       link: "https://github.com/Krishna67890/Sikkim-Travel-App",
       image: sikkimImg,
-      narration: "Sikkim Travel App Hackathon, 1st Place at Matoshri college of Engineering. It features specialized travel guide application for exploring the beauty of Sikkim with itinerary planning."
+      narration: "Sikkim Travel App Hackathon, 1st Place at Matoshri college of Engineering. Team members: Krishna Patil, Darshan Devre, Chaitanya Devre, Shraddha Chavan, Zalak Bora, Diksha Khambayade."
     },
     {
       title: "AI-VIBE-CHAT Personality Bot",
@@ -35,6 +37,17 @@ const Hackathons = ({ searchQuery }) => {
       link: "https://github.com/Krishna67890/Scholarship-AI-Agent-For-Sandip-University",
       image: prixImg,
       narration: "PRIX Robotics Scholarship AI. Tril Project finalist at Sandip University. An advanced AI agent designed to assist students in finding and applying for scholarships."
+    },
+    {
+      title: "Sandip University International Agentic AI Hackathon",
+      position: "3rd Round ",
+      college: "Sandip University",
+      description: "PolicyGuard — An intelligent AI Agentic security policy auditing and compliance platform developed during the International Agentic AI Hackathon.",
+      members: ["Krishna Patil", "Om Nikumb", "Ritesh Rathod", "Yash Baviskar"],
+      link: "https://github.com/omnik7/PolicyGuard",
+      image: agenticAiImg,
+      rotate: 270,
+      narration: "Sandip University International Agentic AI Hackathon 3rd Round with project PolicyGuard. Team members Krishna Patil, Om Nikumb, Ritesh Rathod, and Yash Baviskar."
     }
   ];
 
@@ -44,12 +57,14 @@ const Hackathons = ({ searchQuery }) => {
     const desc = hack.description.toLowerCase().replace(/[^a-z0-9]/g, '');
     const college = hack.college.toLowerCase().replace(/[^a-z0-9]/g, '');
     const position = hack.position.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const members = (hack.members || []).join(' ').toLowerCase().replace(/[^a-z0-9]/g, '');
     const link = (hack.link || "").toLowerCase();
 
     return title.includes(query) ||
            desc.includes(query) ||
            college.includes(query) ||
            position.includes(query) ||
+           members.includes(query) ||
            link.includes(searchQuery.toLowerCase());
   });
 
@@ -70,13 +85,23 @@ const Hackathons = ({ searchQuery }) => {
               onMouseLeave={stop}
             >
               <div className="hack-image">
-                <img src={hack.image} alt={hack.title} />
+                <img
+                  src={hack.image}
+                  alt={hack.title}
+                  style={hack.rotate ? { transform: `rotate(${hack.rotate}deg) scale(1.2)` } : undefined}
+                />
                 <div className="hack-badge">{hack.position}</div>
               </div>
               <div className="hack-content">
                 <span className="hack-college">{hack.college}</span>
                 <h3>{hack.title}</h3>
                 <p>{hack.description}</p>
+                {hack.members && (
+                  <div className="hack-members">
+                    <span className="members-icon">👥</span>
+                    <span><strong>Team Members:</strong> {hack.members.join(', ')}</span>
+                  </div>
+                )}
                 {hack.link && (
                   <a href={hack.link} target="_blank" rel="noopener noreferrer" className="hack-link">
                     View on GitHub ❯

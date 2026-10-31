@@ -1,7 +1,20 @@
 import React from 'react';
 import './Background.css';
 
-const Background = () => {
+const Background = ({ searchQuery }) => {
+  const query = (searchQuery || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+  const matches = query === '' ||
+                  'background'.includes(query) ||
+                  'journey'.includes(query) ||
+                  'education'.includes(query) ||
+                  'matoshri'.includes(query) ||
+                  'devops'.includes(query) ||
+                  'experience'.includes(query);
+
+  if (!matches && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="background" className="background-section">
       <div className="container">

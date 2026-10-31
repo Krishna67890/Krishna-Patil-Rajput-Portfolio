@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 import gsap from 'gsap';
 import linktreeLogo from '../../assets/Links/Linktree.png';
-import githubLogo from '../../assets/Links/Github logo.jpg';
+import githubLogo from '../../assets/Links/Github-Logo.png';
 import microsoftLogo from '../../assets/Links/Microsoft logo.png';
 import kaggleLogo from '../../assets/Links/Kaggle logo .png';
 import credlyLogo from '../../assets/Links/credly logo.png';
@@ -11,10 +11,12 @@ import resumeLogo from '../../assets/Links/resume logo.jpg';
 import linkedinLogo from '../../assets/Linkedin logo.png';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import originalPhoto from '../../assets/Krishna-Original.jpg';
-import resumePdf from '../../assets/Krishna Patil resume.pdf';
+import resumePdf1 from '../../assets/Krishna Patil resume_1.pdf';
+import resumePdf2 from '../../assets/Krishna_Ajaysing_Patil_Resume_2.pdf';
+import resumePdf3 from '../../assets/Krishna_Ajaysing_Patil_Resume_3.pdf';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
-const Hero = () => {
+const Hero = ({ searchQuery }) => {
   const { speak, stop, isSpeaking, voiceType, toggleVoiceType } = usePortfolioVoice();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -22,6 +24,15 @@ const Hero = () => {
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const modalRef = useRef(null);
   const modalContentRef = useRef(null);
+
+  const query = (searchQuery || "").toLowerCase().replace(/[^a-z0-9]/g, '');
+  const matches = query === '' ||
+                  'home'.includes(query) ||
+                  'hero'.includes(query) ||
+                  'krishna'.includes(query) ||
+                  'developer'.includes(query) ||
+                  'matoshri'.includes(query) ||
+                  'nashik'.includes(query);
   const cvLink = "https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A";
 
   const introText = `
@@ -92,6 +103,10 @@ const Hero = () => {
     return () => window.removeEventListener('keydown', handleEsc);
   }, [isModalOpen]);
 
+  if (!matches && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="hero" className="hero-section">
       <div className="container">
@@ -101,9 +116,16 @@ const Hero = () => {
               <div
                 className={`photo-circle ${isSpeaking ? 'speaking-active' : ''}`}
                 onClick={openModal}
-                onMouseEnter={() => !isSpeaking && speak("I am Krishna Patil Rajput. Click to view my profile.")}
+                onMouseEnter={() => !isSpeaking && speak("I am Krishna. Hover to rotate photo and logo, click to view profile.")}
               >
-                <img src={profileLogo} alt="Krishna Patil Rajput" />
+                <div className="photo-card-inner">
+                  <div className="photo-card-face photo-card-front">
+                    <img src={originalPhoto} alt="Krishna Original" />
+                  </div>
+                  <div className="photo-card-face photo-card-back">
+                    <img src={profileLogo} alt="Krishna Logo" />
+                  </div>
+                </div>
                 {isSpeaking && (
                   <div className="ai-visualizer">
                     <div className="bar"></div>
@@ -161,14 +183,17 @@ const Hero = () => {
             </div>
             <h1
               className="hero-title"
-              onClick={() => speak("I am Krishna Patil Rajput, a 3rd-year IT student at Matoshri College. I am a specialist in Full-stack and App development from Nashik.")}
-              onMouseEnter={() => speak("Krishna Patil Rajput")}
+              onClick={() => speak("I am Krishna Ajaysing Patil, a 3rd-year IT student at Matoshri College. I am a specialist in Full-stack and App development from Nashik.")}
+              onMouseEnter={() => speak("Krishna Ajaysing Patil")}
             >
-              Hi, I'm <span className="highlight-rgb">Krishna Patil Rajput</span> 👨‍💻
+              Hi, I'm <span className="highlight-rgb">Krishna Ajaysing Patil</span> 👨‍💻
             </h1>
-            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 3rd Year IT Student at Matoshri College of Engineering. I'm a Full-stack and App Developer.")}>
+            <div className="hero-brand-name" onMouseEnter={() => speak("Brand Name: Krishna Patil Rajput")}>
+              <span className="brand-label">Brand Name</span> = <span className="brand-value">Krishna Patil Rajput</span>
+            </div>
+            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 3rd Year IT Student at Matoshri College of Engineering. I'm a Full-stack, App and Game Developer.")}>
               I'm a passionate 3rd Year IT Student at <strong>Matoshri College of Engineering</strong>.
-              I'm a <strong>Full-stack and App Developer</strong>.
+              I'm a <strong>Full-stack, App and Game Developer</strong>.
             </p>
             <p className="hero-description" onMouseEnter={() => speak("Nashik, India. Exploring AI, App Development, and the future of web interactive experiences.")}>
               📍 <strong>Nashik, India</strong>. Exploring AI, App Development, and the future of web interactive experiences.
@@ -178,7 +203,13 @@ const Hero = () => {
               <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer">
                 <img src={githubLogo} alt="GitHub" className="link-icon" /> GitHub
               </a> •
-              <a href={resumePdf} download="Krishna_Patil_Resume.pdf" onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}>
+              <a href={resumePdf1} download="Krishna_Patil_resume_1.pdf" onClick={() => speak("Downloading CV-1.")}>
+                <img src={resumeLogo} alt="Resume" className="link-icon" /> CV-1
+              </a> •
+              <a href={resumePdf2} download="Krishna_Ajaysing_Patil_Resume_2.pdf" onClick={() => speak("Downloading CV-2.")}>
+                <img src={resumeLogo} alt="Resume" className="link-icon" /> CV-2
+              </a> •
+              <a href={resumePdf3} download="Krishna_Ajaysing_Patil_Resume_3.pdf" onClick={() => speak("Downloading Resume 3.")}>
                 <img src={resumeLogo} alt="Resume" className="link-icon" /> Resume
               </a> •
               <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">
@@ -210,7 +241,7 @@ const Hero = () => {
                 className="btn btn-secondary"
                 onMouseEnter={() => speakAction("Opening my open-source repositories where you can review my clean code and architecture.")}
               >
-                <img src={githubLogo} alt="GitHub" className="btn-icon" /> GitHub
+                <img src={githubLogo} alt="GitHub" className="btn-icon" /> Github
               </a>
               <a
                 href={cvLink}
@@ -222,13 +253,31 @@ const Hero = () => {
                 <img src={resumeLogo} alt="Resume" className="btn-icon" /> View Resume
               </a>
               <a
-                href={resumePdf}
-                download="Krishna_Patil_Resume.pdf"
+                href={resumePdf1}
+                download="Krishna_Patil_resume_1.pdf"
                 className="btn btn-resume"
-                onMouseEnter={() => !isSpeaking && speak("Click to download my resume.")}
-                onClick={() => speak("Downloading my professional curriculum vitae, optimized for technical recruiters.")}
+                onMouseEnter={() => !isSpeaking && speak("Click to download CV 1.")}
+                onClick={() => speak("Downloading CV 1.")}
               >
-                <img src={resumeLogo} alt="Resume" className="btn-icon" /> Download CV
+                <img src={resumeLogo} alt="Resume" className="btn-icon" /> Download CV-1
+              </a>
+              <a
+                href={resumePdf2}
+                download="Krishna_Ajaysing_Patil_Resume_2.pdf"
+                className="btn btn-resume"
+                onMouseEnter={() => !isSpeaking && speak("Click to download CV 2.")}
+                onClick={() => speak("Downloading CV 2.")}
+              >
+                <img src={resumeLogo} alt="Resume" className="btn-icon" /> Download CV-2
+              </a>
+              <a
+                href={resumePdf3}
+                download="Krishna_Ajaysing_Patil_Resume_3.pdf"
+                className="btn btn-resume"
+                onMouseEnter={() => !isSpeaking && speak("Click to download Resume 3.")}
+                onClick={() => speak("Downloading Resume 3.")}
+              >
+                <img src={resumeLogo} alt="Resume" className="btn-icon" /> Download Resume
               </a>
             </div>
           </div>

@@ -28,12 +28,14 @@
 .hack-image {
   position: relative;
   height: 250px;
+  overflow: hidden;
 }
 
 .hack-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .hack-badge {
@@ -76,7 +78,30 @@
   color: var(--secondary-text);
   line-height: 1.6;
   font-size: 1.05rem;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+}
+
+.hack-members {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  background: rgba(59, 130, 246, 0.08);
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  flex-wrap: wrap;
+}
+
+.hack-members .members-icon {
+  font-size: 1.1rem;
+}
+
+.hack-members strong {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 .hack-link {
